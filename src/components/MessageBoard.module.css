@@ -1,0 +1,51 @@
+.board {
+  list-style: none;
+  padding: 0;
+  columns: 3 280px;
+  column-gap: 20px;
+}
+
+.note {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.quote {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.attribution {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.name {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.meta {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.empty {
+  text-align: center;
+  padding: 56px 24px;
+  background: var(--white);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+}
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 460px;
+}
+.input {
+  flex: 1;
+  min-width: 220px;
+}
+.msg {
+  flex-basis: 100%;
+  font-size: 0.9375rem;
+  margin-top: 2px;
+}
+.ok { color: oklch(0.5 0.12 150); }
+.err { color: var(--primary); }

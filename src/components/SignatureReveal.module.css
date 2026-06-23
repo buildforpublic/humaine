@@ -1,0 +1,90 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 36px 28px;
+  background: var(--white);
+  border: 1px solid var(--surface-green-deep);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.kicker {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: oklch(0.5 0.12 150);
+}
+
+/* Stage that holds either the drawn signature or the handwritten name. */
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  padding-block: 8px;
+  border-bottom: 2px dashed var(--border-strong);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+/* Caveat fallback / instant handwriting — writes in via a clip wipe. */
+.scriptName {
+  font-family: var(--font-script);
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+  white-space: nowrap;
+  animation: write 1.4s var(--ease) both;
+}
+
+/* Drawn signature — reveal the ink left to right. */
+.drawn {
+  max-height: 150px;
+  max-width: 100%;
+  width: auto;
+  animation: write 1.6s var(--ease) both;
+}
+
+/* Stroke-by-stroke replay (centerline paths drawn in order). */
+.strokesSvg {
+  max-height: 150px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+@keyframes write {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin-top: 4px;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scriptName,
+  .drawn {
+    animation: none;
+  }
+}

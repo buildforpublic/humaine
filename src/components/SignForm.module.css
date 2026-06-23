@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signBtn {
+  gap: 0.6rem;
+}
+
+.fineprint {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* The "anonymous" toggle sits beside Full name, aligned to the field baseline. */
+.anonField {
+  justify-content: flex-end;
+}
+.anonLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: transparent; /* spacer to align the checkbox with the name input */
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .anonLabel {
+    display: none;
+  }
+}

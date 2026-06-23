@@ -1,0 +1,29 @@
+{
+  "name": "humaine-movement",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@ark-ui/react": "^5.37.2",
+    "@libsql/client": "^0.14.0",
+    "drizzle-orm": "^0.36.4",
+    "next": "^16.2.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tegaki": "^0.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "drizzle-kit": "^0.28.1",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,164 @@
+/* -------------------------------------------------------------------- HERO */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(72px, 12vw, 150px);
+  background:
+    radial-gradient(120% 90% at 80% -10%, var(--surface-purple) 0%, transparent 55%),
+    radial-gradient(100% 80% at 0% 0%, var(--surface-blue) 0%, transparent 50%),
+    var(--paper);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+.heroInner > * + * {
+  margin-top: 1.5rem;
+}
+
+.heroLogo {
+  height: clamp(64px, 8vw, 92px);
+  width: auto;
+  display: block;
+  margin-bottom: 0.85rem;
+  /* entrance, then a slow continuous float */
+  animation: logoIn 1.2s var(--ease) both,
+    logoFloat 5.5s ease-in-out 1.4s infinite;
+}
+
+.heroEyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.brk { display: none; }
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 2rem;
+}
+
+.heroCount {
+  margin-top: 1.75rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.heroCount strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.heroGlow {
+  position: absolute;
+  right: -10%;
+  bottom: -40%;
+  width: 60%;
+  height: 120%;
+  background: radial-gradient(
+    closest-side,
+    oklch(0.7447 0.1499 48.32 / 0.16),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------- WHY */
+.prompt {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.pullquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  line-height: 1.35;
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
+  padding-left: 22px;
+  margin-block: 0.5rem;
+}
+
+/* ----------------------------------------------------------- FOUNDING MEMBERS */
+.members {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 4px 24px;
+}
+.member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 4px;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+.memberDot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ------------------------------------------------------------------ FOLLOW */
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  border: 1px solid oklch(0.85 0.02 350 / 0.25);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: border-color 0.16s var(--ease), background 0.16s var(--ease);
+}
+.social:hover {
+  border-color: var(--accent);
+  background: oklch(0.7447 0.1499 48.32 / 0.12);
+}
+
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--r-lg);
+  background: oklch(0.85 0.02 350 / 0.07);
+  border: 1px solid oklch(0.85 0.02 350 / 0.14);
+}
+
+.resources {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .newsletter {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
