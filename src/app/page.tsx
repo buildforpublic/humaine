@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
+import { BlurRevealSection } from "@/components/BlurRevealSection";
 import { CommunityCarousel } from "@/components/CommunityCarousel";
 import { NewsletterForm } from "@/components/NewsletterForm";
-import { FOUNDING_MEMBERS, SOCIALS } from "@/content";
+import { TextReveal } from "@/components/TextReveal";
+import { FOUNDING_MEMBERS, SOCIALS, VALUES } from "@/content";
 import { getSignatureCount } from "@/db/queries";
 import styles from "./home.module.css";
 
@@ -17,27 +20,21 @@ export default async function HomePage() {
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroInner}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/humaine-logo.png"
-              alt="HumAIne logo — a fingerprint and a circuit forming an H"
-              className={styles.heroLogo}
-            />
-            <p className={`${styles.heroEyebrow} rise rise-1`}>HumAIne Movement</p>
             <h1 className="display rise rise-2">
-              Stay human <br className={styles.brk} />
-              with AI.
+              Embrace AI
+              <br className={styles.brk} />
+              <span className={styles.heroLine}>Become more human</span>
             </h1>
             <p className="lead rise rise-3" style={{ maxWidth: "44ch" }}>
-              A global movement for people who refuse to choose between embracing
-              AI and staying deeply human. They&rsquo;re part of the same goal.
+              A global movement for people embracing AI fully while deepening
+              human agency, creativity, judgment, connection, and care.
             </p>
             <div className={`${styles.heroCtas} rise rise-4`}>
               <Link href="/manifesto" className="btn btn-primary btn-lg">
                 Read the Manifesto
               </Link>
-              <a href="#follow" className="btn btn-ghost btn-lg">
-                Follow the Movement
+              <a href="#follow" className="btn btn-secondary btn-lg">
+                Join the Movement
               </a>
             </div>
             {count > 0 && (
@@ -48,105 +45,107 @@ export default async function HomePage() {
             )}
           </div>
         </div>
-        <div className={styles.heroGlow} aria-hidden="true" />
+        <img
+          className={styles.heroThumbprint}
+          src="/thumbprint.svg"
+          alt=""
+          aria-hidden="true"
+        />
       </section>
 
-      {/* ----------------------------------------------------- COMMUNITY CAROUSEL */}
-      <section className="section-tight">
-        <div
-          className="container stack"
-          style={{
-            textAlign: "center",
-            maxWidth: "46ch",
-            marginInline: "auto",
-            marginBottom: "2.5rem",
-          }}
-        >
-          <p className="eyebrow" style={{ textAlign: "center" }}>
-            In real life
-          </p>
-          <h2>A real, global community</h2>
-          <p className="muted">
-            Not just an idea online — people learning, building, and staying
-            human with AI together.
-          </p>
+      {/* ------------------------------------------------------- FALSE CHOICE */}
+      <BlurRevealSection className="section-tight">
+        <div className="container">
+          <div className={styles.binary}>
+            <p>Using AI shouldn&rsquo;t make people less human.</p>
+            <div className={styles.binaryLine} aria-label="Embrace AI and stay human">
+              <span>Embrace AI</span>
+              <span className={styles.binaryOr}>or</span>
+              <span>Stay Human</span>
+              <strong>and</strong>
+            </div>
+            <p>How we approach AI determines whether AI elevates lives or ruins lives.</p>
+          </div>
         </div>
-        <CommunityCarousel />
-      </section>
+      </BlurRevealSection>
 
       {/* ----------------------------------------------------------------- WHY */}
-      <section id="why" className="section">
-        <div className="container container-narrow stack-lg">
-          <div className="stack">
-            <p className="eyebrow">Why</p>
-            <h2>Why does HumAIne exist?</h2>
-          </div>
-          <p className={styles.prompt}>
-            When you imagine humanity in 2050, what do you see? Is it a future
-            where humanity is flourishing? Or do you see humanity decaying?
-          </p>
-          <div className="stack" style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}>
-            <p>
-              We&rsquo;re living through one of the fastest shifts in human
-              history — and almost all of the buzz is about AI technology. How
-              powerful it&rsquo;s getting. How fast. What it will replace.
-              Adapting to AI keeps getting framed as a choice: embrace AI, or
-              stay human. Move fast, or be careful.
-            </p>
-            <p className={styles.pullquote}>
-              But underneath all of it is a quieter, more important question: how
-              do we, as humans, fully embrace AI while flourishing human
-              potential?
-            </p>
-            <p>
-              HumAIne exists to answer that — not with fear, and not by slowing
-              down, but by embracing AI fully and using it to become more human,
-              not less. More thoughtful. More connected. To elevate human
-              potential.
-            </p>
-          </div>
+      <BlurRevealSection id="why" className={`section ${styles.whySection}`}>
+        <div className={`container ${styles.revealBlock}`}>
+          <TextReveal
+            lines={[
+              {
+                text: "We refuse the false choice.",
+              },
+              {
+                text: "Adapting to AI keeps getting framed as a choice: embrace AI, or stay human.",
+              },
+              {
+                text: "We believe embracing AI and staying deeply human are part of the same goal: to elevate human potential and build a progressive humanity.",
+              },
+              {
+                text: "How do we fully embrace AI while flourishing human potential?",
+                emphasis: true,
+              },
+              {
+                text: "Not with fear, and not by slowing down, but by embracing AI fully and using it to become more human, more thoughtful, more connected.",
+              },
+            ]}
+          />
         </div>
-      </section>
+      </BlurRevealSection>
 
       {/* ---------------------------------------------------------------- WHAT */}
-      <section id="what" className="section band-blue">
+      <BlurRevealSection id="what" className="section band-cream">
         <div className="container container-narrow stack-lg">
           <div className="stack">
-            <p className="eyebrow">What</p>
-            <h2>What is HumAIne?</h2>
+            <h2>A centre of gravity for human flourishing with AI.</h2>
           </div>
           <p className="lead">
-            HumAIne is a global movement for people who refuse to choose between
-            embracing AI and staying deeply human. They&rsquo;re part of the same
-            goal.
+            Grassroot initiatives and independent voices are emerging all over
+            the world.
           </p>
           <div className="stack" style={{ fontSize: "1.0625rem", lineHeight: 1.7 }}>
             <p>
-              HumAIne serves as the centre of gravity for people who care about
-              human flourishing with AI. It is a community to learn, exchange
-              ideas, and practise Human-AI Synergy in your own way — open to all.
+              HumAIne aims to unite them into a community to learn, exchange
+              ideas and practise Human-AI Synergy, rooted in the values and
+              principles of the HumAIne Manifesto.
             </p>
             <p>
-              At the heart of the movement is the{" "}
-              <strong>HumAIne Manifesto</strong>. It establishes the values and
-              principles for practising Human-AI Synergy.
+              However you want to stay human with AI, there&rsquo;s a place for
+              you.
             </p>
-          </div>
-          <div>
-            <Link href="/manifesto" className="btn btn-primary btn-lg">
-              Read the Manifesto
-            </Link>
           </div>
         </div>
-      </section>
+      </BlurRevealSection>
+
+      {/* ------------------------------------------------------------- VALUES */}
+      <BlurRevealSection className="section">
+        <div className="container stack-lg">
+          <div className="stack" style={{ maxWidth: "46ch" }}>
+            <h2>Four values we choose to live by.</h2>
+          </div>
+          <ul className={styles.valuesPreview}>
+            {VALUES.map((value) => (
+              <li
+                key={value.left}
+                className={`${styles.valuePreview} ${styles[value.color]}`}
+              >
+                <span>{value.left}</span>
+                <span>{value.right}</span>
+              </li>
+            ))}
+          </ul>
+          <Link href="/manifesto" className="btn btn-primary btn-lg">
+            Read the full Manifesto
+          </Link>
+        </div>
+      </BlurRevealSection>
 
       {/* ------------------------------------------------------ FOUNDING MEMBERS */}
-      <section id="founding-members" className="section">
+      <BlurRevealSection id="founding-members" className="section">
         <div className="container stack-lg">
           <div className="stack" style={{ textAlign: "center", maxWidth: "44ch", marginInline: "auto" }}>
-            <p className="eyebrow" style={{ textAlign: "center" }}>
-              The first to sign
-            </p>
             <h2>Founding Members of HumAIne</h2>
             <p className="muted">
               The people who put their names to this movement first.
@@ -166,58 +165,78 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </BlurRevealSection>
 
       {/* -------------------------------------------------------------- FOLLOW */}
-      <section id="follow" className="section band-ink">
+      <BlurRevealSection id="follow" className="section band-ink">
         <div className="container stack-lg">
           <div className="stack" style={{ maxWidth: "40ch" }}>
-            <p className="eyebrow" style={{ color: "var(--accent)" }}>
-              Follow the movement
-            </p>
-            <h2>Turn passive agreement into visible momentum.</h2>
-            <p style={{ color: "oklch(0.85 0.02 350)", fontSize: "1.0625rem" }}>
-              Join the community, share the manifesto, and help more people stay
-              human with AI.
+            <h2>Many sparks together can start a fire.</h2>
+            <p style={{ color: "rgb(244 241 234 / 0.82)", fontSize: "1.0625rem" }}>
+              Sign the manifesto, stay in the loop, or follow the movement on
+              social.
             </p>
           </div>
 
-          <div className={styles.socials}>
-            {SOCIALS.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className={styles.social}
-              >
-                {s.label}
-              </a>
-            ))}
-          </div>
-
-          <div className={styles.newsletter}>
-            <div>
-              <h3 style={{ color: "var(--paper)" }}>Sign up to the newsletter</h3>
-              <p style={{ color: "oklch(0.78 0.02 350)", marginTop: 6 }}>
-                Occasional updates from the movement. No noise.
-              </p>
+          <div className={styles.joinGrid}>
+            <div className={styles.joinCard}>
+              <h3>Sign the Manifesto</h3>
+              <p>Put your name to the movement and join the first wave.</p>
+              <Link href="/manifesto#sign" className="btn btn-light">
+                Sign Now
+              </Link>
             </div>
-            <NewsletterForm />
-          </div>
 
-          <div className={styles.resources}>
-            <span className="chip">Coming soon</span>
-            <span style={{ color: "oklch(0.8 0.02 350)" }}>
-              A library of articles, podcasts &amp; resources on staying human
-              with AI.
-            </span>
-            <button className="btn btn-light" disabled aria-disabled="true">
-              Explore Resources
-            </button>
+            <div className={styles.joinCard}>
+              <h3>Subscribe to the newsletter</h3>
+              <p>Stay in the loop with updates from the movement.</p>
+              <NewsletterForm />
+            </div>
+
+            <div className={styles.joinCard}>
+              <h3>Be an active member</h3>
+              <p>Join future forums, offline events, or contribute as a volunteer.</p>
+              <div className={styles.socials}>
+                {SOCIALS.filter((s) => s.label !== "TikTok").map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.social}
+                  >
+                    {s.label === "LinkedIn" && <FaLinkedinIn aria-hidden="true" />}
+                    {s.label === "Instagram" && <FaInstagram aria-hidden="true" />}
+                    {s.label === "WhatsApp Community" && (
+                      <FaWhatsapp aria-hidden="true" />
+                    )}
+                    {s.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </BlurRevealSection>
+
+      {/* ----------------------------------------------------- COMMUNITY PHOTOS */}
+      <BlurRevealSection className="section-tight">
+        <div
+          className="container stack"
+          style={{
+            textAlign: "center",
+            maxWidth: "46ch",
+            marginInline: "auto",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <h2>A real, global community</h2>
+          <p className="muted">
+            People learning, building, and staying human with AI together.
+          </p>
+          </div>
+        <CommunityCarousel />
+      </BlurRevealSection>
     </>
   );
 }

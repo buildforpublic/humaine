@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import { SignForm } from "@/components/SignForm";
 import { MessageBoard } from "@/components/MessageBoard";
@@ -8,13 +9,28 @@ import { getSignatureCount } from "@/db/queries";
 import { nextMilestone } from "@/lib/milestones";
 import styles from "./manifesto.module.css";
 
-// Always render fresh so the signature count and approved message board are current.
+// Always render fresh so the signature count, wall, and message board are current.
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "The Manifesto",
+  title: "Manifesto for Human-Centred AI",
   description:
-    "The HumAIne Manifesto establishes the values and principles of a human-centered approach to AI. Read it, and sign.",
+    "Read and sign the HumAIne Manifesto: twelve principles for using AI with purpose, active thinking, human agency, and deeper human connection.",
+  alternates: {
+    canonical: "/manifesto",
+  },
+  openGraph: {
+    title: "The HumAIne Manifesto",
+    description:
+      "Twelve principles for using AI with purpose, active thinking, human agency, and deeper human connection.",
+    url: "/manifesto",
+  },
+  twitter: {
+    card: "summary",
+    title: "The HumAIne Manifesto",
+    description:
+      "Twelve principles for using AI with purpose, active thinking, human agency, and deeper human connection.",
+  },
 };
 
 export default async function ManifestoPage() {
@@ -24,52 +40,94 @@ export default async function ManifestoPage() {
 
   return (
     <>
-      {/* --------------------------------------------------------------- INTRO */}
-      <section className={styles.intro}>
-        <div className="container container-narrow stack-lg">
-          <div className="stack">
-            <p className="eyebrow">The Manifesto</p>
+      {/* ---------------------------------------------------------------- HERO */}
+      <section className={styles.hero}>
+        <div className={`container ${styles.heroInner}`}>
+          <div className={styles.heroCopy}>
+            <p className={styles.kicker}>The Manifesto</p>
             <h1 className="display">The HumAIne Manifesto</h1>
-          </div>
-          <p className="lead">
-            This Manifesto establishes the values and principles of a
-            human-centered approach to AI.
-          </p>
-          <div className={styles.isnot}>
-            <div className={styles.isnotCol}>
-              <span className={styles.isnotLabel}>What it is not</span>
-              <p>
-                A &ldquo;how-to&rdquo; guide for exactly what to do or not do.
-              </p>
+            <p className="lead">
+              A human-centred approach to AI. Not a how-to guide for exactly
+              what to do, but a direction for decisions that puts human
+              flourishing first.
+            </p>
+            <p className={styles.oath}>No matter what, humans come first.</p>
+            <div className={styles.heroCtas}>
+              <Link href="#principles" className="btn btn-primary btn-lg">
+                Read the principles
+              </Link>
+              <Link href="#sign" className="btn btn-secondary btn-lg">
+                Sign the Manifesto
+              </Link>
             </div>
-            <div className={styles.isnotCol}>
-              <span className={styles.isnotLabel}>What it is</span>
-              <p>
-                A direction for decision making, which prioritises humans&rsquo;
-                long-term wellbeing and flourishing of human potential. No matter
-                what, humans come first.
-              </p>
+          </div>
+
+          <aside className={styles.heroPanel} aria-label="Manifesto structure">
+            <div>
+              <span>4</span>
+              <p>values we choose to live by</p>
+            </div>
+            <div>
+              <span>12</span>
+              <p>principles for staying human with AI</p>
+            </div>
+            <div>
+              <span>{count.toLocaleString()}</span>
+              <p>{count === 1 ? "person has" : "people have"} signed so far</p>
+            </div>
+          </aside>
+        </div>
+        <svg
+          className={styles.heroGeometry}
+          viewBox="0 0 760 560"
+          aria-hidden="true"
+        >
+          <ellipse cx="430" cy="280" rx="260" ry="520" />
+          <ellipse cx="520" cy="280" rx="210" ry="470" />
+          <ellipse cx="610" cy="280" rx="160" ry="420" />
+        </svg>
+      </section>
+
+      {/* ------------------------------------------------------------ POSITION */}
+      <section className="section-tight">
+        <div className="container">
+          <div className={styles.position}>
+            <div>
+              <span>Not this</span>
+              <p>A rulebook for outsourced thinking.</p>
+            </div>
+            <strong>but</strong>
+            <div>
+              <span>This</span>
+              <p>A centre of gravity for judgment, agency, and care.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* -------------------------------------------------------------- VALUES */}
-      <section className="section band-cream">
-        <div className="container container-narrow stack-lg">
-          <p className={styles.valuesIntro}>
-            We are uncovering better ways of living and working in the age of AI
-            by practising the following values. We recognise that while there is
-            value in the items on the right (higher efficiency, less effort,
-            etc.), we value the items on the left more.
-          </p>
+      <section className="section">
+        <div className="container stack-lg">
+          <div className={styles.sectionHeader}>
+            <p className={styles.kicker}>What we stand for</p>
+            <h2>Four values we choose over the easier path.</h2>
+            <p>
+              We&apos;re uncovering better ways of living and working in the age
+              of AI. The values on the right are the easier short-term path; we
+              choose the left for the long-term wellbeing of humanity.
+            </p>
+          </div>
 
-          <ul className={styles.values}>
-            {VALUES.map((v) => (
-              <li key={v.left} className={styles.value}>
-                <span className={styles.valueLeft}>{v.left}</span>
+          <ul className={styles.valuesGrid}>
+            {VALUES.map((value) => (
+              <li
+                key={value.left}
+                className={`${styles.valueCard} ${styles[value.color]}`}
+              >
+                <span className={styles.valueLabel}>We prioritise</span>
+                <strong>{value.left}</strong>
                 <span className={styles.valueOver}>over</span>
-                <span className={styles.valueRight}>{v.right}</span>
+                <p>{value.right}</p>
               </li>
             ))}
           </ul>
@@ -77,120 +135,107 @@ export default async function ManifestoPage() {
       </section>
 
       {/* ----------------------------------------------------------- PRINCIPLES */}
-      <section className="section">
-        <div className="container container-narrow">
-          <div className="stack" style={{ marginBottom: "3rem" }}>
-            <p className="eyebrow">Principles</p>
-            <h2>Principles behind the HumAIne Manifesto</h2>
+      <section id="principles" className="section band-cream">
+        <div className="container stack-lg">
+          <div className={styles.sectionHeader}>
+            <p className={styles.kicker}>Twelve principles</p>
+            <h2>The practical spine of the manifesto.</h2>
           </div>
 
-          <div className={styles.principles}>
-            {PRINCIPLES.map((p, i) => (
-              <article key={p.title} className={`${styles.principle} band-${p.band}`}>
-                <div className={styles.principleNum}>{`0${i + 1}`}</div>
-                <h3>{p.title}</h3>
-                <ul className={styles.points}>
-                  {p.points.map((pt, j) => (
-                    <li key={j}>{pt}</li>
+          <div className={styles.principlesGrid}>
+            {PRINCIPLES.map((principle, groupIndex) => (
+              <article
+                key={principle.title}
+                className={`${styles.principleGroup} ${styles[principle.band]}`}
+              >
+                <div className={styles.principleHead}>
+                  <h3>{principle.title}</h3>
+                  <p>over {VALUES[groupIndex]?.right.toLowerCase()}</p>
+                </div>
+                <ol className={styles.points}>
+                  {principle.points.map((point, pointIndex) => (
+                    <li key={point}>
+                      <span>{groupIndex * 3 + pointIndex + 1}</span>
+                      <p>{point}</p>
+                    </li>
                   ))}
-                </ul>
+                </ol>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ----------------------------------------------------------- LIVING DOC */}
-      <section className="section-tight">
-        <div className="container container-narrow">
-          <div className={styles.living}>
-            <h3 className={styles.livingTitle}>This is a living manifesto.</h3>
+      {/* ---------------------------------------------------------------- SIGN */}
+      <section id="sign" className={`section band-ink ${styles.signSection}`}>
+        <div className={`container ${styles.signGrid}`}>
+          <div className={styles.signIntro}>
+            <p className={styles.kicker}>The living manifesto</p>
+            <h2>
+              Embrace AI. <br />
+              <span>Become more human.</span>
+            </h2>
             <p>
-              While the values and principles are curated to be timeless
-              fundamentals, as AI continues to develop, there may be updated
-              versions. Most importantly, the commitment beneath them does not:{" "}
-              <strong>Stay Human with AI.</strong>
+              The values endure even as versions evolve. If this direction
+              speaks to you, put your name to the movement.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* --------------------------------------------------------------- SIGN */}
-      <section id="sign" className="section band-blue">
-        <div className="container">
-          <div className={styles.signLayout}>
-            <div className={styles.signIntro}>
-              <p className="eyebrow">Take the next step</p>
-              <h2>Sign the Manifesto</h2>
-              <p style={{ fontSize: "1.0625rem", lineHeight: 1.6, marginTop: "1rem" }}>
-                If the above values and principles speak to you, paint a picture
-                of a future that you want to live in, or make you feel connected
-                — take the next step.
+            <div className={styles.momentum}>
+              <p>
+                <strong>{count.toLocaleString()}</strong>{" "}
+                {count === 1 ? "person has" : "people have"} signed. Help us
+                reach {goal.toLocaleString()}.
               </p>
-              <div className={styles.momentum}>
-                <p className={styles.momentumLead}>
-                  We&rsquo;ve collected{" "}
-                  <span className={styles.momentumNum}>
-                    {count.toLocaleString()}
-                  </span>{" "}
-                  {count === 1 ? "signature" : "signatures"} so far — help us
-                  reach our{" "}
-                  {goal <= 100 ? "first" : "next"} {goal.toLocaleString()}.
-                </p>
-                <div
-                  className={styles.progress}
-                  role="progressbar"
-                  aria-valuenow={count}
-                  aria-valuemin={0}
-                  aria-valuemax={goal}
-                >
-                  <span
-                    className={styles.progressFill}
-                    style={{ width: `${Math.max(progress, 2)}%` }}
-                  />
-                </div>
-                <p className={styles.progressMeta}>
-                  {progress}% of the way to {goal.toLocaleString()}
-                </p>
+              <div
+                className={styles.progress}
+                role="progressbar"
+                aria-valuenow={count}
+                aria-valuemin={0}
+                aria-valuemax={goal}
+              >
+                <span
+                  className={styles.progressFill}
+                  style={{ width: `${Math.max(progress, 2)}%` }}
+                />
               </div>
+              <span>{progress}% of the way there</span>
             </div>
+          </div>
 
-            <div className={`card ${styles.signCard}`}>
-              <SignForm />
-            </div>
+          <div className={styles.signPanel}>
+            <SignForm />
           </div>
         </div>
       </section>
 
       {/* ----------------------------------------------------- SIGNATURE WALL */}
-      <section className="section band-cream">
+      <section className="section">
         <div className="container stack-lg">
-          <div className="stack" style={{ maxWidth: "48ch" }}>
-            <p className="eyebrow">The wall</p>
+          <div className={styles.sectionHeader}>
+            <p className={styles.kicker}>The wall</p>
             <h2>Signed by humans</h2>
-            <p className="muted">
+            <p>
               Every name here belongs to someone who chose to stay human with
-              AI. Shown once reviewed.
+              AI. Admins may remove entries that do not belong here.
             </p>
           </div>
-          <Suspense fallback={<p className="muted">Loading signatures…</p>}>
+          <Suspense fallback={<p className="muted">Loading signatures...</p>}>
             <SignatureWall />
           </Suspense>
         </div>
       </section>
 
       {/* ------------------------------------------------------- MESSAGE BOARD */}
-      <section className="section">
+      <section className="section band-cream">
         <div className="container stack-lg">
-          <div className="stack" style={{ maxWidth: "48ch" }}>
-            <p className="eyebrow">The board</p>
+          <div className={styles.sectionHeader}>
+            <p className={styles.kicker}>The board</p>
             <h2>What people hope we remember</h2>
-            <p className="muted">
-              Messages left by people who signed the manifesto. Shown once
-              reviewed.
+            <p>
+              Messages left by people who signed the manifesto. Admins may
+              remove entries that do not belong here.
             </p>
           </div>
-          <Suspense fallback={<p className="muted">Loading messages…</p>}>
+          <Suspense fallback={<p className="muted">Loading messages...</p>}>
             <MessageBoard />
           </Suspense>
         </div>

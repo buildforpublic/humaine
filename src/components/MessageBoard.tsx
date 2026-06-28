@@ -9,8 +9,7 @@ export async function MessageBoard() {
       <div className={styles.empty}>
         <p className={styles.emptyTitle}>No messages on the board yet.</p>
         <p className="muted">
-          Be one of the first to leave a message when you sign — approved
-          messages appear here.
+          Be one of the first to leave a message when you sign.
         </p>
       </div>
     );

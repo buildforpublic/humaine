@@ -1,223 +1,500 @@
-/* --------------------------------------------------------------------- INTRO */
-.intro {
-  padding-block: clamp(64px, 10vw, 120px);
-  background:
-    radial-gradient(110% 80% at 100% 0%, var(--surface-green) 0%, transparent 55%),
-    var(--paper);
+.kicker {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.isnot {
+/* ----------------------------------------------------------------------- HERO */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: clamp(40px, 6vw, 84px);
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100dvh - var(--nav-height));
+  min-height: calc(100svh - var(--nav-height));
+  background: var(--paper);
+  border-bottom: 1px solid var(--divider-slate);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: clamp(36px, 7vw, 96px);
+  align-items: center;
 }
-.isnotCol {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 22px 24px;
+
+.heroCopy {
+  max-width: 760px;
 }
-.isnotLabel {
+
+.heroCopy > * + * {
+  margin-top: 1.5rem;
+}
+
+.heroCopy h1 {
+  max-width: 10ch;
+}
+
+.oath {
+  max-width: 34ch;
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  line-height: 1.18;
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 2rem;
+}
+
+.heroPanel {
+  display: grid;
+  border-top: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border-strong);
+  background: rgb(244 241 234 / 0.72);
+}
+
+.heroPanel div {
+  min-height: 134px;
+  padding: 22px;
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.heroPanel span {
   display: block;
-  font-size: 0.75rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 0.95;
+}
+
+.heroPanel p {
+  max-width: 18ch;
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.heroGeometry {
+  position: absolute;
+  top: -1px;
+  right: max(-140px, -8vw);
+  z-index: 1;
+  width: min(58vw, 760px);
+  height: calc(100% + 2px);
+  color: var(--ink);
+  opacity: 0.22;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------- POSITION */
+.position {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(12px, 3vw, 26px);
+  align-items: stretch;
+  padding: clamp(28px, 5vw, 52px);
+  border-block: 1px solid var(--divider-slate);
+}
+
+.position div {
+  min-height: 170px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--border-strong);
+  background: var(--white);
+}
+
+.position span {
+  color: var(--muted);
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-.isnotCol:last-child .isnotLabel {
-  color: var(--primary);
 }
 
-/* -------------------------------------------------------------------- VALUES */
-.valuesIntro {
+.position p {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 4vw, 3.1rem);
+  line-height: 1.04;
+}
+
+.position strong {
+  align-self: start;
+  margin-top: -18px;
+  padding: 9px 22px;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  line-height: 1;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------------ SECTIONS */
+.sectionHeader {
+  max-width: 52ch;
+}
+
+.sectionHeader > * + * {
+  margin-top: 1rem;
+}
+
+.sectionHeader h2 {
+  max-width: 12ch;
+}
+
+.sectionHeader p:not(.kicker) {
+  color: var(--ink-soft);
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--ink-soft);
 }
 
-.values {
+/* --------------------------------------------------------------------- VALUES */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
   list-style: none;
   padding: 0;
+  border-top: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border-strong);
+}
+
+.valueCard {
   display: flex;
+  min-height: 290px;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+  padding: clamp(20px, 2.4vw, 28px);
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
 }
-.value {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 18px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 20px 26px;
-}
-.valueLeft {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
-  font-weight: 600;
-  color: var(--ink);
-  text-align: right;
-}
+
+.valueLabel,
 .valueOver {
-  font-size: 0.8125rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
   text-transform: uppercase;
-  color: var(--primary);
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-pill);
+  opacity: 0.74;
 }
-.valueRight {
-  font-size: 1.0625rem;
-  color: var(--muted);
+
+.valueCard strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.1vw, 2.55rem);
+  font-weight: 500;
+  line-height: 1.02;
+}
+
+.valueOver {
+  margin-top: auto;
+}
+
+.valueCard p {
+  max-width: 18ch;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.3;
+  opacity: 0.86;
+}
+
+.amber {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.moss {
+  background: var(--moss);
+  color: var(--paper);
+}
+
+.terracotta {
+  background: var(--terracotta);
+  color: var(--paper);
+}
+
+.rose {
+  background: var(--rose);
+  color: var(--ink);
 }
 
 /* ----------------------------------------------------------------- PRINCIPLES */
-.principles {
+.principlesGrid {
   display: grid;
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border-strong);
 }
-.principle {
-  position: relative;
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: clamp(28px, 4vw, 44px);
+
+.principleGroup {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 460px;
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--paper);
 }
-.principleNum {
-  font-family: var(--font-display);
-  font-size: 1rem;
+
+.principleHead {
+  padding: clamp(22px, 3vw, 34px);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.principleHead h3 {
+  max-width: 10ch;
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  font-weight: 500;
+}
+
+.principleHead p {
+  margin-top: 12px;
+  color: var(--ink-soft);
   font-weight: 600;
-  color: var(--primary);
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
 }
-.principle h3 {
-  margin-bottom: 18px;
-}
+
 .points {
+  display: grid;
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
 }
+
 .points li {
-  position: relative;
-  padding-left: 28px;
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
-}
-.points li::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 11px;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  background: var(--primary);
-  transform: rotate(45deg);
-}
-
-/* ----------------------------------------------------------------- LIVING DOC */
-.living {
-  text-align: center;
-  max-width: 56ch;
-  margin-inline: auto;
-}
-.livingTitle {
-  font-style: italic;
-  margin-bottom: 12px;
-}
-.living p {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-}
-
-/* ---------------------------------------------------------------------- SIGN */
-.signLayout {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 72px minmax(0, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+
+.points li:last-child {
+  border-bottom: 0;
+}
+
+.points span {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 23px;
+  border-right: 1px solid var(--border);
+  color: currentColor;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0.88;
+}
+
+.points p {
+  padding: 22px clamp(20px, 2.5vw, 30px);
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.62;
+}
+
+.principleGroup.amber {
+  background: var(--surface-amber);
+  color: var(--ink);
+}
+
+.principleGroup.moss {
+  background: var(--surface-moss);
+  color: var(--moss);
+}
+
+.principleGroup.terracotta {
+  background: var(--surface-terracotta);
+  color: var(--terracotta);
+}
+
+.principleGroup.rose {
+  background: var(--surface-rose);
+  color: var(--ink);
+}
+
+/* ----------------------------------------------------------------------- SIGN */
+.signSection {
+  border-bottom: 1px solid var(--divider-slate);
+}
+
+.signGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(36px, 7vw, 88px);
   align-items: start;
 }
+
 .signIntro {
   position: sticky;
-  top: 96px;
-}
-.signCard {
-  background: var(--white);
+  top: 112px;
 }
 
-/* Tally-style momentum header + progress bar. */
+.signIntro h2 {
+  margin-top: 1rem;
+  color: var(--paper);
+  font-size: clamp(2.35rem, 5.7vw, 4.8rem);
+  line-height: 0.98;
+}
+
+.signIntro h2 span {
+  color: var(--accent);
+}
+
+.signIntro p:not(.kicker) {
+  max-width: 34ch;
+  margin-top: 1.5rem;
+  color: rgb(244 241 234 / 0.82);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
 .momentum {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-strong);
+  border-top: 1px solid rgb(244 241 234 / 0.22);
 }
-.momentumLead {
-  font-size: 1.0625rem;
-  line-height: 1.5;
-  color: var(--ink);
-  font-weight: 600;
-}
-.momentumNum {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--primary);
-  font-variant-numeric: tabular-nums;
-}
-.progress {
-  margin-top: 16px;
-  height: 12px;
-  width: 100%;
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: var(--r-pill);
-  overflow: hidden;
-}
-.progressFill {
-  display: block;
-  height: 100%;
-  border-radius: var(--r-pill);
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  transition: width 0.6s var(--ease);
-}
-.progressMeta {
-  margin-top: 8px;
-  font-size: 0.8125rem;
-  color: var(--muted);
+
+.momentum p {
+  color: var(--paper);
   font-weight: 600;
 }
 
-@media (max-width: 860px) {
-  .signLayout {
+.momentum strong {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.45em;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress {
+  width: 100%;
+  height: 12px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid rgb(244 241 234 / 0.28);
+  background: rgb(244 241 234 / 0.12);
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.6s var(--ease);
+}
+
+.momentum > span {
+  display: block;
+  margin-top: 9px;
+  color: rgb(244 241 234 / 0.62);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.signPanel {
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgb(244 241 234 / 0.22);
+  background: rgb(244 241 234 / 0.07);
+}
+
+.signPanel :global(label),
+.signPanel :global(.hint),
+.signPanel :global(.checkbox),
+.signPanel :global(.notice),
+.signPanel :global(p) {
+  color: rgb(244 241 234 / 0.82);
+}
+
+.signPanel :global(.input),
+.signPanel :global(.textarea),
+.signPanel :global(.select) {
+  border-color: rgb(244 241 234 / 0.28);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.signPanel :global(.input:focus),
+.signPanel :global(.textarea:focus),
+.signPanel :global(.select:focus) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgb(230 165 50 / 0.2);
+}
+
+.signPanel :global(.btn-primary) {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.signPanel :global(.btn-primary:hover) {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+@media (max-width: 980px) {
+  .heroInner,
+  .signGrid {
     grid-template-columns: 1fr;
   }
+
+  .heroCopy h1 {
+    max-width: 12ch;
+  }
+
+  .heroPanel {
+    max-width: 720px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .signIntro {
     position: static;
   }
 }
-@media (max-width: 560px) {
-  .isnot {
+
+@media (max-width: 720px) {
+  .heroGeometry {
+    right: -220px;
+    width: 720px;
+    opacity: 0.12;
+  }
+
+  .heroPanel,
+  .position,
+  .valuesGrid,
+  .principlesGrid {
     grid-template-columns: 1fr;
   }
-  .value {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    text-align: center;
-  }
-  .valueLeft {
-    text-align: center;
-  }
-  .valueOver {
+
+  .position strong {
     justify-self: center;
+    margin-block: -18px;
+  }
+
+  .valueCard,
+  .principleGroup {
+    min-height: auto;
+  }
+
+  .points li {
+    grid-template-columns: 54px minmax(0, 1fr);
+  }
+
+  .points span {
+    font-size: 1.45rem;
   }
 }

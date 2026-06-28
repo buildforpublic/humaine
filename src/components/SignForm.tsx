@@ -128,7 +128,7 @@ export function SignForm() {
             className="textarea"
             rows={4}
             maxLength={500}
-            placeholder="Your words may appear on the public message board once reviewed."
+            placeholder="Your words may appear on the public message board."
           />
         </div>
 

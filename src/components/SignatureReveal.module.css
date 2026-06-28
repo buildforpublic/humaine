@@ -6,7 +6,7 @@
   gap: 10px;
   padding: 36px 28px;
   background: var(--white);
-  border: 1px solid var(--surface-green-deep);
+  border: 1px solid var(--surface-moss-deep);
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-sm);
 }
@@ -16,7 +16,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: oklch(0.5 0.12 150);
+  color: var(--moss);
 }
 
 /* Stage that holds either the drawn signature or the handwritten name. */

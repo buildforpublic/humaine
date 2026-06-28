@@ -41,9 +41,9 @@ function Row({ row }: { row: Signature }) {
           <strong>{row.name}</strong>
           {row.anonymous && <span className={styles.tag}>anonymous</span>}
           {row.approved ? (
-            <span className={`${styles.tag} ${styles.tagOk}`}>approved</span>
+            <span className={`${styles.tag} ${styles.tagOk}`}>visible</span>
           ) : (
-            <span className={`${styles.tag} ${styles.tagPend}`}>pending</span>
+            <span className={`${styles.tag} ${styles.tagPend}`}>hidden</span>
           )}
         </p>
         <p className={styles.meta}>
@@ -61,7 +61,7 @@ function Row({ row }: { row: Signature }) {
             disabled={pending}
             onClick={() => run(() => unapproveSignature(row.id))}
           >
-            Unapprove
+            Hide
           </button>
         ) : (
           <button
@@ -69,7 +69,7 @@ function Row({ row }: { row: Signature }) {
             disabled={pending}
             onClick={() => run(() => approveSignature(row.id))}
           >
-            Approve
+            Restore
           </button>
         )}
 

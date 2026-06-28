@@ -29,7 +29,7 @@ export async function getSignatureCount(): Promise<number> {
 }
 
 /**
- * Approved, non-empty messages for the public board.
+ * Visible, non-empty messages for the public board.
  * Anonymous signatures still show their message, but as "Anonymous".
  */
 export async function getBoardMessages(limit = 60): Promise<BoardMessage[]> {
@@ -58,7 +58,7 @@ export async function getBoardMessages(limit = 60): Promise<BoardMessage[]> {
 }
 
 /**
- * Approved, non-anonymous signatures for the public signature wall.
+ * Visible, non-anonymous signatures for the public signature wall.
  * Drawn entries carry an SVG data URL; "lazy" entries have `signature: null`
  * and are rendered as the signer's name in a cursive script.
  */
@@ -80,7 +80,7 @@ export async function getSignatureWall(limit = 80): Promise<WallSignature[]> {
   }));
 }
 
-/** All signatures for the admin moderation queue: pending first, then newest. */
+/** All signatures for the admin moderation queue: hidden first, then newest. */
 export async function getAdminSignatures(): Promise<Signature[]> {
   await ensureSchema();
   return db

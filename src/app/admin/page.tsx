@@ -23,8 +23,8 @@ export default async function AdminPage() {
   }
 
   const rows = await getAdminSignatures();
-  const pending = rows.filter((r) => !r.approved);
-  const approved = rows.filter((r) => r.approved);
+  const hidden = rows.filter((r) => !r.approved);
+  const visible = rows.filter((r) => r.approved);
 
   return (
     <div className={styles.wrap}>
@@ -33,9 +33,9 @@ export default async function AdminPage() {
           <p className="eyebrow">Moderation</p>
           <h1 className={styles.title}>Signature queue</h1>
           <p className="muted">
-            {pending.length} pending · {approved.length} approved · {rows.length}{" "}
-            total. Approving publishes the message (to the board) and signature
-            (to the wall, if not anonymous).
+            {visible.length} visible · {hidden.length} hidden · {rows.length}{" "}
+            total. New signatures appear publicly by default; hide or delete
+            anything that does not belong.
           </p>
         </div>
         <form action={adminLogout}>
@@ -46,20 +46,20 @@ export default async function AdminPage() {
       </header>
 
       <section className={styles.group}>
-        <h2 className={styles.groupTitle}>Pending ({pending.length})</h2>
-        {pending.length === 0 ? (
-          <p className="muted">Nothing waiting. 🎉</p>
+        <h2 className={styles.groupTitle}>Hidden ({hidden.length})</h2>
+        {hidden.length === 0 ? (
+          <p className="muted">No hidden signatures.</p>
         ) : (
-          <ModerationList rows={pending} />
+          <ModerationList rows={hidden} />
         )}
       </section>
 
       <section className={styles.group}>
-        <h2 className={styles.groupTitle}>Approved ({approved.length})</h2>
-        {approved.length === 0 ? (
-          <p className="muted">No approved signatures yet.</p>
+        <h2 className={styles.groupTitle}>Visible ({visible.length})</h2>
+        {visible.length === 0 ? (
+          <p className="muted">No visible signatures yet.</p>
         ) : (
-          <ModerationList rows={approved} />
+          <ModerationList rows={visible} />
         )}
       </section>
     </div>
