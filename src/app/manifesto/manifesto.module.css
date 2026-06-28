@@ -14,9 +14,9 @@
   align-items: center;
   overflow: hidden;
   padding-block: clamp(40px, 6vw, 84px);
-  min-height: calc(100vh - var(--nav-height));
-  min-height: calc(100dvh - var(--nav-height));
-  min-height: calc(100svh - var(--nav-height));
+  min-height: calc(100vh - var(--nav-occupied-height));
+  min-height: calc(100dvh - var(--nav-occupied-height));
+  min-height: calc(100svh - var(--nav-occupied-height));
   background: var(--paper);
   border-bottom: 1px solid var(--divider-slate);
 }

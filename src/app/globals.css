@@ -60,6 +60,10 @@
   --container: 1140px;
   --container-narrow: 760px;
   --nav-height: 72px;
+  --nav-border-width: 1px;
+  --nav-occupied-height: calc(
+    var(--nav-height) + var(--nav-border-width) + var(--nav-border-width)
+  );
 
   /* --- Motion --- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -80,6 +84,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-occupied-height);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -194,12 +199,7 @@ p {
 .band-purple { background: var(--surface-rose); }
 .band-cream { background: var(--paper-tint); }
 .band-ink {
-  --grid-line: rgb(244 241 234 / 0.09);
-  background:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    var(--ink);
-  background-size: 80px 80px;
+  background: var(--ink);
   color: var(--paper);
 }
 .band-ink h1, .band-ink h2, .band-ink h3 { color: var(--paper); }
