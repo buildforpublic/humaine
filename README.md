@@ -12,6 +12,20 @@ This repo is open and built in public. If you're a volunteer builder picking thi
 up — welcome. This README is your map: the brand, the content direction, the
 requirements, and how the code is put together.
 
+## 📚 Project docs — start here
+
+| Doc | What it is |
+|-----|------------|
+| 📄 **[PRD / Brief](https://docs.google.com/document/d/1rRh1Cv2qDn56KEkoCooA3yiSqJXKbxR1TJYFzMCsGJA/edit?usp=sharing)** | The product brief — **read this first** |
+| 🆕 **[v2 updates doc](https://docs.google.com/document/d/1ZT2xbZtWQxUKEM6ZNDBWCyFid155SqRkY7TQaShYj88/edit?usp=drivesdk)** | Finalised Founding Members + Manifesto, and the v2 change list |
+| 🎨 **[Brand Kit](https://drive.google.com/drive/folders/1941Sjazk1NblVGu2TrapPcaZZ27er1z2?usp=sharing)** · **[updated logo (v2)](https://drive.google.com/file/d/1fZYt3TVB58XfwtxCZb8X6rZccjPgDdXu/view?usp=drivesdk)** | Logo + brand assets |
+| 🗣️ **[Voice & Messaging](https://docs.google.com/document/d/13bjNVMvgb5dChVjHKN9AUJeZO8eVSMmK-HbSWVh16Ws/edit?usp=sharing)** | Tone & copy guide |
+| 👥 **[Founding Members — Insider View (PDF)](https://drive.google.com/file/d/14-J6-AnouDpLwa_b2JH3EX_HxFzSMHNT/view?usp=sharing)** | Background for the team |
+| 📷 **[Community photo album (Playbook)](https://www.playbook.com/s/hiztoree/uXtB4ru7AysXKyzg6qLs4QSR)** | Photos for the site |
+| 🖼️ **Design mockups:** [1](https://drive.google.com/file/d/1UPvd4N84fEP53Zyg-VHfVD-LgV3zEPqD/view?usp=sharing) · [2](https://drive.google.com/file/d/1M78idzsiSZmVs57jKGt1_dfGCecPougd/view?usp=sharing) | Early design explorations |
+
+> Some docs are restricted to the HumAIne team — request access if a link 401s.
+
 ---
 
 ## Table of contents
@@ -26,7 +40,6 @@ requirements, and how the code is put together.
 8. [Data model & moderation](#data-model--moderation)
 9. [Deploying](#deploying)
 10. [How to contribute](#how-to-contribute)
-11. [Reference docs](#reference-docs)
 
 ---
 
@@ -295,18 +308,8 @@ Good places to start:
 Keep it **open and built in public**. Copy goes in `src/content.ts`; brand goes
 in `globals.css`. Open a PR — small and focused is great.
 
----
-
-## Reference docs
-
-- 📄 **[PRD / Brief](https://docs.google.com/document/d/1rRh1Cv2qDn56KEkoCooA3yiSqJXKbxR1TJYFzMCsGJA/edit?usp=sharing)** — the product brief this README distils
-- 🆕 **[v2 updates doc](https://docs.google.com/document/d/1ZT2xbZtWQxUKEM6ZNDBWCyFid155SqRkY7TQaShYj88/edit?usp=drivesdk)** — finalised Founding Members + Manifesto, and the v2 change list
-- 🎨 **[Brand Kit (logo + assets)](https://drive.google.com/drive/folders/1941Sjazk1NblVGu2TrapPcaZZ27er1z2?usp=sharing)** · [updated logo (v2)](https://drive.google.com/file/d/1fZYt3TVB58XfwtxCZb8X6rZccjPgDdXu/view?usp=drivesdk)
-- 🗣️ **[Voice & Messaging](https://docs.google.com/document/d/13bjNVMvgb5dChVjHKN9AUJeZO8eVSMmK-HbSWVh16Ws/edit?usp=sharing)**
-- 👥 **[Insider View for Founding Members (PDF)](https://drive.google.com/file/d/14-J6-AnouDpLwa_b2JH3EX_HxFzSMHNT/view?usp=sharing)**
-- 📷 **[Community photo album (Playbook)](https://www.playbook.com/s/hiztoree/uXtB4ru7AysXKyzg6qLs4QSR)**
-- 🖼️ **Design mockups:** [mockup 1](https://drive.google.com/file/d/1UPvd4N84fEP53Zyg-VHfVD-LgV3zEPqD/view?usp=sharing) · [mockup 2](https://drive.google.com/file/d/1M78idzsiSZmVs57jKGt1_dfGCecPougd/view?usp=sharing)
-- 🎨 [`DESIGN.md`](DESIGN.md) — the as-built design-token reference
+> All briefs, brand assets, and references are in
+> **[📚 Project docs](#-project-docs--start-here)** at the top of this README.
 
 ---
 
