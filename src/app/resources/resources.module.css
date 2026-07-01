@@ -1,0 +1,20 @@
+.hero {
+  background: var(--paper-tint);
+}
+
+.heroCopy {
+  max-width: 62ch;
+}
+
+.heroCopy > * + * {
+  margin-top: 1.1rem;
+}
+
+.kicker {
+  display: inline-block;
+  color: var(--primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}

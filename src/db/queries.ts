@@ -1,6 +1,7 @@
 import { and, asc, desc, eq, isNotNull, ne, sql } from "drizzle-orm";
 import { db, ensureSchema } from "./client";
-import { signatures, type Signature } from "./schema";
+import { resources, signatures, type Resource, type Signature } from "./schema";
+import { VALUES, type ValueMeta } from "./resource-values";
 
 export type BoardMessage = {
   id: number;
@@ -87,4 +88,118 @@ export async function getAdminSignatures(): Promise<Signature[]> {
     .select()
     .from(signatures)
     .orderBy(asc(signatures.approved), desc(signatures.createdAt));
+}
+
+/* ---------------------------------------------------------------------------
+   Resource Bank
+   ------------------------------------------------------------------------- */
+
+/** A resource as rendered on the public page. `notes` is intentionally omitted. */
+export type PublicResource = {
+  id: number;
+  value: string;
+  type: string;
+  title: string;
+  source: string | null;
+  origin: string | null;
+  length: string | null;
+  aud: string[];
+  oneLiner: string | null;
+  link: string | null;
+  featured: boolean;
+  featuredOrder: number | null;
+  featuredWhy: string | null;
+};
+
+/** Everything the public Resource Bank page needs to render and filter. */
+export type ResourceBank = {
+  values: ValueMeta[];
+  valueOrder: string[];
+  types: string[];
+  origins: string[];
+  audiences: string[];
+  resources: PublicResource[];
+  featured: PublicResource[];
+};
+
+function splitAudience(raw: string | null): string[] {
+  if (!raw) return [];
+  return raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function toPublic(r: Resource): PublicResource {
+  return {
+    id: r.id,
+    value: r.value,
+    type: r.type,
+    title: r.title,
+    source: r.source,
+    origin: r.origin,
+    length: r.length,
+    aud: splitAudience(r.audience),
+    oneLiner: r.oneLiner,
+    link: r.link,
+    featured: r.featured,
+    featuredOrder: r.featuredOrder,
+    featuredWhy: r.featuredWhy,
+  };
+}
+
+/**
+ * Published resources plus the derived filter option sets, in the brief's shape.
+ * Filter options (types/origins/audiences) are derived from the live rows, so a
+ * new option added in the admin flows to the page filters with no code change.
+ */
+export async function getPublicResources(): Promise<ResourceBank> {
+  await ensureSchema();
+  const valueRank = new Map<string, number>(VALUES.map((v) => [v.key, v.order]));
+
+  const rows = (
+    await db
+      .select()
+      .from(resources)
+      .where(eq(resources.published, true))
+      .orderBy(asc(resources.sortOrder), asc(resources.id))
+  ).map(toPublic);
+
+  // Order resources by value section, then by their manual sort order.
+  rows.sort((a, b) => {
+    const va = valueRank.get(a.value) ?? 99;
+    const vb = valueRank.get(b.value) ?? 99;
+    return va - vb;
+  });
+
+  const types = [...new Set(rows.map((r) => r.type))];
+  const origins = [...new Set(rows.map((r) => r.origin).filter(Boolean))] as string[];
+  const audiences = [...new Set(rows.flatMap((r) => r.aud))];
+
+  const featured = rows
+    .filter((r) => r.featured)
+    .sort((a, b) => (a.featuredOrder ?? 99) - (b.featuredOrder ?? 99));
+
+  return {
+    values: [...VALUES],
+    valueOrder: VALUES.map((v) => v.key),
+    types,
+    origins,
+    audiences,
+    resources: rows,
+    featured,
+  };
+}
+
+/** All resources for the admin dashboard: by value section, then manual order. */
+export async function getAdminResources(): Promise<Resource[]> {
+  await ensureSchema();
+  const rows = await db
+    .select()
+    .from(resources)
+    .orderBy(asc(resources.sortOrder), asc(resources.id));
+  const valueRank = new Map<string, number>(VALUES.map((v) => [v.key, v.order]));
+  return rows.sort(
+    (a, b) => (valueRank.get(a.value) ?? 99) - (valueRank.get(b.value) ?? 99),
+  );
 }
