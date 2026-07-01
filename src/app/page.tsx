@@ -2,9 +2,12 @@ import Link from "next/link";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
 import { BlurRevealSection } from "@/components/BlurRevealSection";
 import { CommunityCarousel } from "@/components/CommunityCarousel";
+import { FoundingTeam } from "@/components/FoundingTeam";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { TextReveal } from "@/components/TextReveal";
-import { FOUNDING_MEMBERS, SOCIALS, VALUES } from "@/content";
+import { VideoSection } from "@/components/VideoSection";
+import ParticlesBg from "@/components/ui/particles-bg";
+import { SOCIALS, VALUES } from "@/content";
 import { getSignatureCount } from "@/db/queries";
 import styles from "./home.module.css";
 
@@ -18,6 +21,7 @@ export default async function HomePage() {
     <>
       {/* ---------------------------------------------------------------- HERO */}
       <section className={styles.hero}>
+        <ParticlesBg />
         <div className="container">
           <div className={styles.heroInner}>
             <h1 className="display rise rise-2">
@@ -52,6 +56,9 @@ export default async function HomePage() {
           aria-hidden="true"
         />
       </section>
+
+      {/* --------------------------------------------------------------- FILM */}
+      <VideoSection />
 
       {/* ------------------------------------------------------- FALSE CHOICE */}
       <BlurRevealSection className="section-tight">
@@ -151,14 +158,7 @@ export default async function HomePage() {
               The people who put their names to this movement first.
             </p>
           </div>
-          <ul className={styles.members}>
-            {FOUNDING_MEMBERS.map((name) => (
-              <li key={name} className={styles.member}>
-                <span className={styles.memberDot} aria-hidden="true" />
-                {name}
-              </li>
-            ))}
-          </ul>
+          <FoundingTeam />
           <div style={{ textAlign: "center" }}>
             <Link href="/manifesto#sign" className="btn btn-primary btn-lg">
               Sign the Manifesto

@@ -204,31 +204,6 @@
   color: var(--ink);
 }
 
-/* ----------------------------------------------------------- FOUNDING MEMBERS */
-.members {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 4px 24px;
-}
-.member {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 4px;
-  font-size: 1.0625rem;
-  font-weight: 500;
-  border-bottom: 1px solid var(--border);
-}
-.memberDot {
-  flex: none;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
 /* ------------------------------------------------------------------ FOLLOW */
 .joinGrid {
   display: grid;

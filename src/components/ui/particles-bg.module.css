@@ -1,0 +1,24 @@
+/*
+ * Container for the particles.js canvas.
+ * Fills its nearest positioned ancestor (the hero <section>, which is
+ * position: relative; overflow: hidden) and sits behind the hero content.
+ * Background is transparent so the parchment hero colour shows through and
+ * the particles read as a subtle overlay rather than a full-page gradient.
+ */
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* particles.js absolutely positions the <canvas> it injects; make it fill
+   the container and re-enable pointer events only on the canvas so the
+   hover / click interactions still work without blocking the CTAs. */
+.particles :global(canvas) {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto;
+}
