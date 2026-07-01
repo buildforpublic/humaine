@@ -1,14 +1,14 @@
 import styles from "./CommunityCarousel.module.css";
 
 const PHOTOS = [
-  { src: "/community/photo-1.jpg", alt: "A member presenting at a workshop" },
-  { src: "/community/photo-2.jpg", alt: "Members collaborating at laptops" },
-  { src: "/community/photo-3.jpg", alt: "A small-group discussion" },
-  { src: "/community/photo-4.jpg", alt: "The community meeting online" },
-  { src: "/community/photo-5.jpg", alt: "A full room at a HumAIne session" },
-  { src: "/community/photo-6.jpg", alt: "A member sharing an idea" },
-  { src: "/community/photo-7.jpg", alt: "A facilitator at the whiteboard" },
-  { src: "/community/photo-8.jpg", alt: "People learning together" },
+  { src: "/community/photo-1.jpg", alt: "The room during a HumAIne roundtable session" },
+  { src: "/community/photo-2.jpg", alt: "Members in conversation around a table" },
+  { src: "/community/photo-3.jpg", alt: "A member presenting at a HumAIne roundtable" },
+  { src: "/community/photo-4.jpg", alt: "A small group sharing ideas" },
+  { src: "/community/photo-5.jpg", alt: "Two members talking during a break" },
+  { src: "/community/photo-6.jpg", alt: "Members laughing during a discussion" },
+  { src: "/community/photo-7.jpg", alt: "Members connecting over food" },
+  { src: "/community/photo-8.jpg", alt: "A lively table discussion" },
 ];
 
 // Border colour + tilt per card, cycled for a playful, hand-pinned feel.
