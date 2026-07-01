@@ -15,6 +15,7 @@
   --primary-press: #743d2d;
   --accent: #e6a532;             /* Sun-Flare Amber */
   --accent-hover: #ce8e20;
+  --amber: var(--accent);        /* alias — used by the wordmark + value accents */
   --moss: #2d5a27;               /* Ancient Moss */
   --terracotta: #a35c44;         /* Burned Terracotta */
   --rose: #d4908b;               /* Dusk Rose */

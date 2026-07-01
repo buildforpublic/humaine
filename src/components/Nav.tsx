@@ -19,6 +19,9 @@ export function Nav() {
           <Link href="/#founding-members" className={styles.link}>
             Founding Members
           </Link>
+          <Link href="/resources" className={styles.link}>
+            Resources
+          </Link>
           <Link href="/manifesto" className={styles.link}>
             Manifesto
           </Link>

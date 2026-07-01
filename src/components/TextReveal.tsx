@@ -31,7 +31,7 @@ export function TextReveal({ lines }: { lines: RevealLine[] }) {
 
   useEffect(() => {
     let frame = 0;
-    let previousActive = "";
+    let revealedThrough = -1;
 
     const update = () => {
       const el = ref.current;
@@ -54,33 +54,21 @@ export function TextReveal({ lines }: { lines: RevealLine[] }) {
           };
         })
         .filter((word) => Number.isFinite(word.index));
-      const nearestWord = wordMetrics.reduce<{
-        center: number;
-        distance: number;
-      } | null>((nearest, word) => {
-        const distance = Math.abs(word.center - focusY);
-        if (!nearest || distance < nearest.distance) {
-          return { center: word.center, distance };
-        }
-        return nearest;
-      }, null);
-      const maxFocusDistance = Math.min(160, Math.max(96, viewport * 0.18));
-      const lineTolerance = 6;
 
-      const nextActive =
-        nearestWord && nearestWord.distance <= maxFocusDistance
-          ? wordMetrics
-              .filter(
-                (word) =>
-                  Math.abs(word.center - nearestWord.center) <= lineTolerance,
-              )
-              .map((word) => word.index)
-          : [];
+      // The highest word index whose center has reached (scrolled up to) the
+      // focus line. Words fill top-to-bottom in reading order, so index order
+      // matches vertical order.
+      const passedThreshold = wordMetrics.reduce(
+        (max, word) => (word.center <= focusY ? Math.max(max, word.index) : max),
+        -1,
+      );
 
-      const activeKey = nextActive.join(",");
-      if (activeKey !== previousActive) {
-        previousActive = activeKey;
-        setActiveWordIndexes(nextActive);
+      // Cumulative: once revealed, stay revealed even when scrolling back up.
+      if (passedThreshold > revealedThrough) {
+        revealedThrough = passedThreshold;
+        setActiveWordIndexes(
+          Array.from({ length: revealedThrough + 1 }, (_, i) => i),
+        );
       }
     };
 

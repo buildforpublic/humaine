@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getAdminSignatures } from "@/db/queries";
 import { adminLogout } from "./actions";
 import { isAdmin, adminSecret } from "./auth";
@@ -38,11 +39,16 @@ export default async function AdminPage() {
             anything that does not belong.
           </p>
         </div>
-        <form action={adminLogout}>
-          <button type="submit" className="btn btn-secondary btn-sm">
-            Log out
-          </button>
-        </form>
+        <div className={styles.headerActions}>
+          <Link href="/admin/resources" className="btn btn-secondary btn-sm">
+            Resource Bank
+          </Link>
+          <form action={adminLogout}>
+            <button type="submit" className="btn btn-secondary btn-sm">
+              Log out
+            </button>
+          </form>
+        </div>
       </header>
 
       <section className={styles.group}>

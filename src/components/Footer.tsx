@@ -24,6 +24,7 @@ export function Footer() {
           <Link href="/#what">What is HumAIne</Link>
           <Link href="/#founding-members">Founding Members</Link>
           <Link href="/manifesto">The Manifesto</Link>
+          <Link href="/resources">Resource Bank</Link>
         </nav>
 
         <nav className={styles.col} aria-label="Follow">
@@ -39,7 +40,6 @@ export function Footer() {
           <span className={styles.colTitle}>Coming soon</span>
           <span className={styles.soon}>About HumAIne</span>
           <span className={styles.soon}>Messages</span>
-          <span className={styles.soon}>Resources</span>
         </div>
       </div>
 

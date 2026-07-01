@@ -54,6 +54,18 @@ export async function unapproveSignature(id: number): Promise<void> {
   await setApproved(id, false);
 }
 
+export async function updateMessage(id: number, message: string): Promise<void> {
+  await assertAdmin();
+  await ensureSchema();
+  const trimmed = message.trim();
+  await db
+    .update(signatures)
+    .set({ message: trimmed === "" ? null : trimmed })
+    .where(eq(signatures.id, id));
+  revalidatePath("/admin");
+  revalidatePath("/manifesto");
+}
+
 export async function deleteSignature(id: number): Promise<void> {
   await assertAdmin();
   await ensureSchema();
