@@ -4,7 +4,8 @@ import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 /**
  * Every person who signs the HumAIne Manifesto.
  * Demographic fields are optional and used only in aggregate.
- * `approved` gates whether a message appears on the public board (approve-first).
+ * `approved` gates whether an entry appears publicly; new entries are visible by
+ * default and can be hidden during post-moderation.
  */
 export const signatures = sqliteTable("signatures", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -20,8 +21,8 @@ export const signatures = sqliteTable("signatures", {
   message: text("message"),
   // Drawn signature as an SVG data URL. NULL ⇒ "typed" (render name in cursive).
   signature: text("signature"),
-  // Approve-first moderation: only approved messages appear on the public board.
-  approved: integer("approved", { mode: "boolean" }).notNull().default(false),
+  // Post-moderation: hidden entries are removed from the public wall/board.
+  approved: integer("approved", { mode: "boolean" }).notNull().default(true),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
     .default(sql`(unixepoch())`),

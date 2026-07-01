@@ -5,8 +5,10 @@ import styles from "./Nav.module.css";
 export function Nav() {
   return (
     <header className={styles.header}>
-      <div className={`container ${styles.inner}`}>
-        <Logo />
+      <div className={styles.inner}>
+        <div className={styles.brandCell}>
+          <Logo />
+        </div>
         <nav className={styles.links} aria-label="Primary">
           <Link href="/#why" className={styles.link}>
             Why
@@ -22,7 +24,7 @@ export function Nav() {
           </Link>
         </nav>
         <div className={styles.actions}>
-          <Link href="/manifesto#sign" className="btn btn-primary btn-sm">
+          <Link href="/manifesto#sign" className={styles.cta}>
             Sign the Manifesto
           </Link>
         </div>

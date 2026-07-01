@@ -132,14 +132,14 @@
   border: 1px solid var(--border);
 }
 .tagOk {
-  background: var(--surface-green);
-  border-color: var(--surface-green-deep);
-  color: oklch(0.42 0.09 150);
+  background: var(--surface-moss);
+  border-color: var(--surface-moss-deep);
+  color: var(--moss);
 }
 .tagPend {
-  background: oklch(0.95 0.04 70);
-  border-color: oklch(0.85 0.08 70);
-  color: oklch(0.5 0.12 60);
+  background: var(--surface-amber);
+  border-color: var(--surface-amber-deep);
+  color: var(--primary-hover);
 }
 
 .actions {
@@ -163,7 +163,7 @@
 }
 .deleteBtn:hover {
   color: var(--primary);
-  background: oklch(0.5865 0.2011 24.61 / 0.08);
+  background: rgb(163 92 68 / 0.08);
 }
 .confirm {
   display: inline-flex;

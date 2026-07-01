@@ -17,7 +17,7 @@ function clean(v: FormDataEntryValue | null, max = 280): string | null {
   return t.length ? t : null;
 }
 
-/** Sign the manifesto. Messages are stored unapproved (approve-first). */
+/** Sign the manifesto. Entries appear immediately; admins can hide/remove later. */
 export async function signManifesto(
   _prev: ActionState,
   formData: FormData,
@@ -51,13 +51,13 @@ export async function signManifesto(
       anonymous,
       message: clean(formData.get("message"), 500),
       signature,
-      approved: false,
+      approved: true,
     });
     revalidatePath("/manifesto");
     return {
       ok: true,
       message:
-        "Thank you for signing. Your name has been added to the movement. If you left a message, it will appear on the board once reviewed.",
+        "Thank you for signing. Your name has been added to the movement.",
     };
   } catch (err) {
     console.error("signManifesto failed", err);

@@ -26,3 +26,4 @@ local.db
 *.pem
 npm-debug.log*
 .vercel
+tsconfig.tsbuildinfo

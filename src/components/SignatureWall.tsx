@@ -9,7 +9,7 @@ export async function SignatureWall() {
       <div className={styles.empty}>
         <p className={styles.emptyTitle}>The wall is waiting for its first name.</p>
         <p className="muted">
-          Signatures appear here once reviewed. Sign above to add yours.
+          Sign above to add yours.
         </p>
       </div>
     );

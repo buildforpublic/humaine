@@ -67,20 +67,20 @@ The owner has sent a v2 batch. **None of these are implemented yet** — they're
 next work for a volunteer. Sources are linked; some docs are access-restricted to
 the HumAIne team, so request access if a link 401s.
 
-- [ ] **Brand alignment** — switch to the official fonts (**Georgia** for titles,
+- [x] **Brand alignment** — switch to the official fonts (**Georgia** for titles,
       **Nunito** for body) and the [HUMAINE palette](#the-humaine-palette). See the
       [gap table](#-current-build-vs-official-brand). *(Mostly `globals.css` `:root`
       + `layout.tsx`.)*
 - [ ] **Updated logo** — swap `public/humaine-logo.png` for the
       [v2 logo](https://drive.google.com/file/d/1fZYt3TVB58XfwtxCZb8X6rZccjPgDdXu/view?usp=drivesdk).
-- [ ] **v2 copy** — apply the finalised **Founding Members list** and **Manifesto**
+- [x] **v2 copy** — apply the finalised **Founding Members list** and **Manifesto**
       from the [v2 updates doc](https://docs.google.com/document/d/1ZT2xbZtWQxUKEM6ZNDBWCyFid155SqRkY7TQaShYj88/edit?usp=drivesdk).
       Copy lives in [`src/content.ts`](src/content.ts).
-- [ ] **Community photos** — source from the
+- [x] **Community photos** — source from the
       [photo album (Playbook)](https://www.playbook.com/s/hiztoree/uXtB4ru7AysXKyzg6qLs4QSR),
       and **move the photos section to the bottom of the homepage** (currently the
       `CommunityCarousel` sits just below the hero in `src/app/page.tsx`).
-- [ ] **Moderation → post-moderation** — change from approve-first to
+- [x] **Moderation → post-moderation** — change from approve-first to
       **show-immediately**: signatures/messages appear on the wall/board as soon as
       someone signs; the admin reviews at intervals and **removes** inappropriate
       ones. (See [Data model & moderation](#data-model--moderation) for where this
@@ -135,26 +135,23 @@ A trimmed copy lives at [`public/humaine-logo.png`](public/humaine-logo.png).
 
 ---
 
-## ⚠️ Current build vs. official brand
+## Current build vs. official brand
 
-**Heads up, important:** the current implementation does **not yet match** the
-official brand above. It was first built against a [Giving What We Can](https://www.givingwhatwecan.org/)
-reference, so today the code uses:
+The current implementation now uses the official HUMAINE brand tokens:
 
 | | Official brand (target) | Current code (`src/app/globals.css`) |
 |--|--|--|
-| Display font | Georgia | **Fraunces** |
-| Body font | Nunito | **Manrope** |
-| Background | Ancient Parchment `#F4F1EA` | warm cream `#faf9f5` |
-| Ink | Carbon Slate `#2F353B` | deep plum `oklch(0.232 …)` |
-| Accent | Sun-Flare Amber `#E6A532` | `--amber: #e58807` (close) + a brick red for CTAs |
-| Value colours | amber / moss / terracotta / rose | not yet used per-value |
+| Display font | Georgia | Georgia |
+| Body font | Nunito | Nunito |
+| Background | Ancient Parchment `#F4F1EA` | `--paper: #f4f1ea` |
+| Ink | Carbon Slate `#2F353B` | `--ink: #2f353b` |
+| Accent | Sun-Flare Amber `#E6A532` | `--accent: #e6a532` |
+| Value colours | amber / moss / terracotta / rose | used across homepage + manifesto |
 
-The amber and the real logo are already in. **Aligning the rest to the HUMAINE
-palette + Nunito/Georgia is a great first contribution** — almost everything is
-driven by CSS variables in [`src/app/globals.css`](src/app/globals.css) (`:root`)
-and the fonts in [`src/app/layout.tsx`](src/app/layout.tsx), so it's a contained
-change. See [`DESIGN.md`](DESIGN.md) for the as-built token reference.
+Almost everything is driven by CSS variables in
+[`src/app/globals.css`](src/app/globals.css) (`:root`) and the font loading in
+[`src/app/layout.tsx`](src/app/layout.tsx). See [`DESIGN.md`](DESIGN.md) for the
+as-built token reference.
 
 ---
 
@@ -162,12 +159,12 @@ change. See [`DESIGN.md`](DESIGN.md) for the as-built token reference.
 
 - **Tone:** serious, human, signable. Hopeful, not fearful; embracing AI to
   become *more* human, not less.
-- **The arc:** *Why?* (imagine 2050 — flourishing or decaying?) → *What?* (a
-  global movement; the manifesto is its heart) → *How?* (the values &
-  principles) → *Sign it.*
-- **The manifesto** values *the left over the right*: Purposeful Use over Passive
-  Consumption · Active Thinking over Replacement of Thinking · Human Agency over
-  Total Trust on Algorithms · Deeper Connection over Efficiency-at-all-costs.
+- **The arc:** *Why?* (refuse the false choice) → *What?* (a centre of gravity
+  for human flourishing with AI) → *How?* (the values & principles) → *Sign it.*
+- **The manifesto** values *the left over the right*: Purposeful Use over
+  Resistance or Passive Consumption · Active Thinking over Replacement of
+  Thinking · Human Agency over Total Trust on Algorithms · Deepen Humanness over
+  Efficiency-at-all-costs.
 - Full voice & messaging guide:
   **[HumAIne — Voice & Messaging](https://docs.google.com/document/d/13bjNVMvgb5dChVjHKN9AUJeZO8eVSMmK-HbSWVh16Ws/edit?usp=sharing)**.
 
@@ -186,7 +183,7 @@ change. See [`DESIGN.md`](DESIGN.md) for the as-built token reference.
       "anonymous" toggle, optional message ("What do you hope humans remember in
       the age of AI?")
 - [x] Live signature counter + milestone progress bar
-- [x] Signature wall + message board (approve-first moderation)
+- [x] Signature wall + message board (post-moderation)
 - [x] Hand-drawn **or** typed signature, replayed stroke-by-stroke on success
 - [x] `/admin` moderation queue
 
@@ -262,20 +259,15 @@ its tables automatically on first request — **no external database to run**. S
 `anonymous`, `message?`, `signature?` (drawn SVG data URL), `approved`,
 `created_at`. Plus a `newsletter` table.
 
-**Moderation is approve-first (current):** a signature counts toward the momentum
-counter immediately, but its message (board) and signature (wall) only appear
-publicly once `approved` is `true`. Anonymous signers are excluded from the wall.
-
-> **v2 change requested:** flip this to **post-moderation** — show signatures and
-> messages on the wall/board **immediately** after signing, and let the admin
-> remove inappropriate ones at intervals. Practically: default `approved` to
-> `true` (or have the public queries stop filtering on it) and keep the admin
-> **Delete** action; the admin queue becomes a "review & remove" list rather than
-> an "approve" gate.
+**Moderation is post-moderation:** a signature counts toward the momentum counter
+immediately, and public, non-anonymous signatures plus messages appear on the
+wall/board once saved. New rows default `approved` to `true`; admins can hide
+entries by setting `approved` to `false` or delete them entirely. Anonymous
+signers are excluded from the wall.
 
 **`/admin`** (cookie-gated by `ADMIN_SECRET`, `noindex`) is the moderation queue:
-Approve / Unapprove / Delete each entry, with a preview of the signature. Prefer
-SQL? `bun run db:studio`, or `UPDATE signatures SET approved = 1 WHERE id = …;`.
+Hide / Restore / Delete each entry, with a preview of the signature. Prefer SQL?
+`bun run db:studio`, or `UPDATE signatures SET approved = 0 WHERE id = …;`.
 
 ---
 

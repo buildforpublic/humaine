@@ -20,25 +20,25 @@ export const COUNTRIES: string[] = [
 ];
 
 export const FOUNDING_MEMBERS: string[] = [
-  "Aster Wei Su Hwa",
+  "Arifah Sharifuddin",
+  "Ashvin Praveen",
+  "Aster Wei",
+  "Brendan Beh",
+  "Carl Fernando",
   "Chang Yin Jue",
-  "Wei Chuan Beng",
-  "Sumitra Nair",
+  "Chong Theng Hui",
+  "Dzaharudin Mansor",
+  "Fathy Rashad",
+  "Lizzie Tan",
+  "Marques Menon",
+  "Matthieu Pujol",
   "Muhundhan Kamarapullai",
   "Murali Raman",
-  "Chong Theng Hui",
   "Ng Wan Peng",
-  "Dzaharudin Mansor",
-  "Matthieu Pujol",
-  "Marques Menon",
-  "Carl Fernando",
-  "Fathy Rashad",
-  "Tengku Hafiz",
   "Shawn D'Cotta",
-  "Brendan Beh",
-  "Ashvin Praveen",
-  "Arifah Sharifuddin",
-  "Mohd Naz'ri Mahrin",
+  "Sumitra Nair",
+  "Tengku Hafiz",
+  "Wei Chuan Beng",
 ];
 
 export const SOCIALS = [
@@ -50,53 +50,53 @@ export const SOCIALS = [
 
 /** The four core values: left (what we value more) over right. */
 export const VALUES = [
-  { left: "Purposeful Use", right: "Passive Consumption" },
-  { left: "Active Thinking", right: "Replacement of Thinking" },
-  { left: "Human Agency", right: "Total Trust on Algorithms" },
-  { left: "Deeper Connection", right: "Efficiency-at-all-costs" },
+  { left: "Purposeful Use", right: "Passive Consumption", color: "amber" },
+  { left: "Active Thinking", right: "Replacement of Thinking", color: "moss" },
+  { left: "Human Agency", right: "Total Trust on Algorithms", color: "terracotta" },
+  { left: "Deeper Connection", right: "Efficiency-at-all-costs", color: "rose" },
 ];
 
 export type Principle = {
   title: string;
-  band: "blue" | "green" | "purple" | "cream";
+  band: "amber" | "moss" | "terracotta" | "rose";
   points: string[];
 };
 
 export const PRINCIPLES: Principle[] = [
   {
     title: "Purposeful Use",
-    band: "cream",
+    band: "amber",
     points: [
-      "Welcome AI into work & life with curiosity of how to use it to yield long-term benefit for self and the collective.",
-      "Use AI to enhance human potential; utilise AI as an extension to human intelligence and capabilities, not to replace it altogether.",
+      "Welcome AI into work and life with curiosity about how it can yield long-term benefit for self and the collective.",
+      "Apply AI to enhance human potential, as an extension of human intelligence, not a replacement for it.",
+      "Exercise judgement on when to use or not use AI, based on impact on self, society, and planet.",
     ],
   },
   {
     title: "Active Thinking",
-    band: "blue",
+    band: "moss",
     points: [
-      "Clarify your objective and outcome first to ensure initial thinking is rooted in human intention, not AI suggestions.",
-      "Focus on high-quality prompting to obtain desired AI output, prioritising for quality over quantity of prompts, and preventing the creation of “AI slop”.",
-      "Ask AI to explain its reasoning and research further if you don’t understand or disagree with its underlying logic; favour Explainable AI or “glass box” models.",
-      "Optimise for AI’s energy footprint by selectively using AI for positively value-creating activities, and whenever possible, choose AI models which are more energy efficient.",
+      "Define the objective and outcome first, so thinking stays rooted in human intention, not AI suggestions.",
+      "Craft high-quality instructions to obtain output aligned to human goals and prevent the creation of “AI slop”.",
+      "Investigate how AI arrived at an output and refuse what you can’t make sense of; favour “glass box” models.",
     ],
   },
   {
     title: "Human Agency",
-    band: "green",
+    band: "terracotta",
     points: [
-      "Keep humans in the loop especially for high-risk automations to bridge AI calculations with real-world consequences.",
-      "Listen to your intuition while being mindful of bias, exercise the human \"veto\" when AI output feels unkind, unwise or misaligned with human goals.",
-      "Take ownership of AI-assisted work as if you signed your name on it, supported by the right to inspect how it was made.",
+      "Build in human oversight, especially for high-risk automations, to bridge AI calculations with real-world consequences.",
+      "Exercise discretion when output feels unkind, unwise, or misaligned; listen to intuition for ethical and emotional depth.",
+      "Take ownership of AI-assisted output as if you signed your name on it, supported by others’ right to inspect how it was made.",
     ],
   },
   {
     title: "Deeper Connection",
-    band: "purple",
+    band: "rose",
     points: [
-      "Keep communication “human” for situations requiring higher levels of empathy; be present for the people, while preparations can be AI-assisted.",
-      "Seek direct, first-hand experiences with people and places to build a realistic understanding beyond virtual experiences.",
-      "Allocate time and space to be \"AI-free\", allowing for deep reflection and strategic thinking.",
+      "Protect time and space to be \"AI-free\", allowing for deep reflection and strategic thinking.",
+      "Seek direct, first-hand experiences with people and places, beyond virtual ones.",
+      "Nurture what makes you uniquely human: higher-order thinking, creative expression, and connecting through emotion.",
     ],
   },
 ];

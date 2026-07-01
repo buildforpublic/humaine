@@ -1,0 +1,31 @@
+.reveal {
+  --reveal-offset: 34px;
+
+  scroll-margin-top: var(--reveal-offset);
+  opacity: 0;
+  filter: blur(18px);
+  transform: translateY(var(--reveal-offset)) scale(0.985);
+  transform-origin: center top;
+  transition:
+    opacity 0.7s var(--ease),
+    filter 0.9s var(--ease),
+    transform 0.9s var(--ease);
+  will-change: opacity, filter, transform;
+}
+
+.visible {
+  scroll-margin-top: 0;
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

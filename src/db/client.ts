@@ -31,7 +31,7 @@ export function ensureSchema(): Promise<void> {
             anonymous INTEGER NOT NULL DEFAULT 0,
             message TEXT,
             signature TEXT,
-            approved INTEGER NOT NULL DEFAULT 0,
+            approved INTEGER NOT NULL DEFAULT 1,
             created_at INTEGER NOT NULL DEFAULT (unixepoch())
           )`,
           `CREATE TABLE IF NOT EXISTS newsletter (

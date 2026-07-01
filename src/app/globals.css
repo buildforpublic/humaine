@@ -1,58 +1,69 @@
 /* ============================================================================
    HumAIne — Design tokens
-   Extracted from givingwhatwecan.org (Tailwind v4 / OKLCH palette) and adapted.
-   Display serif: Fraunces (≈ Larken)   ·   Body sans: Manrope (≈ Metropolis)
+   Official palette: parchment, carbon slate, amber, moss, terracotta, rose.
+   Display serif: Georgia   ·   Body sans: Nunito
    ========================================================================== */
 
 :root {
-  /* --- Brand color (OKLCH, as on the reference site) --- */
-  --ink: oklch(0.232 0.097 349.64);          /* deep plum-maroon — primary text */
-  --ink-soft: oklch(0.36 0.06 349.64);        /* softened ink for secondary text */
-  --muted: oklch(0.569 0.03 350.66);          /* mauve-grey — captions, meta */
-  --primary: oklch(0.5865 0.2011 24.61);      /* warm brick red — CTAs */
-  --primary-hover: oklch(0.52 0.2011 24.61);
-  --primary-press: oklch(0.46 0.19 24.61);
-  --accent: oklch(0.7447 0.1499 48.32);       /* warm orange — logo, highlights */
-  --accent-soft: oklch(0.84 0.10 60);
-  --amber: #e58807;                            /* official HumAIne brand amber */
+  /* --- Brand colour --- */
+  --paper: #f4f1ea;              /* Ancient Parchment */
+  --ink: #2f353b;                /* Carbon Slate */
+  --ink-soft: #4f565c;
+  --muted: #70767a;
+  --primary: #a35c44;            /* Burned Terracotta */
+  --primary-hover: #8e4d38;
+  --primary-press: #743d2d;
+  --accent: #e6a532;             /* Sun-Flare Amber */
+  --accent-hover: #ce8e20;
+  --moss: #2d5a27;               /* Ancient Moss */
+  --terracotta: #a35c44;         /* Burned Terracotta */
+  --rose: #d4908b;               /* Dusk Rose */
 
   /* --- Surfaces --- */
-  --paper: #faf9f5;                            /* warm cream — page background */
-  --paper-tint: oklch(0.974 0.007 80.68);     /* faint warm wash */
-  --cream: oklch(0.948 0.0148 80.71);         /* secondary buttons / chips */
+  --paper-tint: #fbf8f1;
+  --cream: #ebe4d7;
   --white: #ffffff;
-  --surface-blue: oklch(0.9465 0.017 225.2);
-  --surface-blue-deep: oklch(0.8909 0.0366 223.2);
-  --surface-green: oklch(0.957 0.013 141.66);
-  --surface-green-deep: oklch(0.904 0.03 143.72);
-  --surface-purple: oklch(0.941 0.018 300.15);
-  --surface-purple-deep: oklch(0.89 0.035 300.31);
+  --surface-amber: #f7ead0;
+  --surface-amber-deep: #efd194;
+  --surface-moss: #e4eadb;
+  --surface-moss-deep: #cbd9bf;
+  --surface-terracotta: #efe0da;
+  --surface-terracotta-deep: #d9b7ab;
+  --surface-rose: #f3dfde;
+  --surface-rose-deep: #e6bfbc;
+  --grid-line: rgb(47 53 59 / 0.1);
 
   /* --- Lines --- */
-  --border: oklch(0.232 0.097 349.64 / 0.14);
-  --border-strong: oklch(0.232 0.097 349.64 / 0.28);
+  --border: rgb(47 53 59 / 0.14);
+  --border-strong: rgb(47 53 59 / 0.28);
+  --divider-slate: var(--ink);
 
   /* --- Typography --- */
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-script: var(--font-caveat), "Segoe Script", "Brush Script MT", cursive;
 
-  /* --- Radius (from reference: 8px buttons, 12–16px cards) --- */
-  --r-sm: 6px;
-  --r: 8px;
-  --r-md: 12px;
-  --r-lg: 16px;
-  --r-xl: 24px;
-  --r-pill: 9999px;
+  /* --- Radius --- */
+  --r-sm: 0;
+  --r: 0;
+  --r-md: 0;
+  --r-lg: 0;
+  --r-xl: 0;
+  --r-pill: 0;
 
   /* --- Shadows (soft, warm) --- */
-  --shadow-sm: 0 1px 2px oklch(0.232 0.097 349.64 / 0.06);
-  --shadow: 0 6px 24px oklch(0.232 0.097 349.64 / 0.08);
-  --shadow-lg: 0 20px 50px oklch(0.232 0.097 349.64 / 0.12);
+  --shadow-sm: 0 1px 2px rgb(47 53 59 / 0.06);
+  --shadow: 0 6px 24px rgb(47 53 59 / 0.08);
+  --shadow-lg: 0 20px 50px rgb(47 53 59 / 0.12);
 
   /* --- Layout --- */
   --container: 1140px;
   --container-narrow: 760px;
+  --nav-height: 72px;
+  --nav-border-width: 1px;
+  --nav-occupied-height: calc(
+    var(--nav-height) + var(--nav-border-width) + var(--nav-border-width)
+  );
 
   /* --- Motion --- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -73,6 +84,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-occupied-height);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -109,7 +121,7 @@ h4 {
   font-family: var(--font-display);
   font-weight: 500;
   line-height: 1.04;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: var(--ink);
   text-wrap: balance;
 }
@@ -119,7 +131,7 @@ h4 {
   font-weight: 500;
   font-size: clamp(2.75rem, 6.5vw, 4.5rem); /* up to ~72px */
   line-height: 1.0;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
 }
 
 h2 {
@@ -145,6 +157,7 @@ p {
 }
 
 .eyebrow {
+  display: none;
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 700;
@@ -173,22 +186,33 @@ p {
 
 .section {
   padding-block: clamp(64px, 9vw, 120px);
+  border-bottom: 1px solid var(--divider-slate);
 }
 
 .section-tight {
   padding-block: clamp(48px, 6vw, 80px);
+  border-bottom: 1px solid var(--divider-slate);
 }
 
-.band-blue { background: var(--surface-blue); }
-.band-green { background: var(--surface-green); }
-.band-purple { background: var(--surface-purple); }
+.band-blue { background: var(--surface-moss); }
+.band-green { background: var(--surface-moss); }
+.band-purple { background: var(--surface-rose); }
 .band-cream { background: var(--paper-tint); }
-.band-ink { background: var(--ink); color: var(--paper); }
+.band-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
 .band-ink h1, .band-ink h2, .band-ink h3 { color: var(--paper); }
+.band-amber { background: var(--surface-amber); }
+.band-moss { background: var(--surface-moss); }
+.band-terracotta { background: var(--surface-terracotta); }
+.band-rose { background: var(--surface-rose); }
 
 .stack > * + * { margin-top: 1.25rem; }
+.stack > .eyebrow + * { margin-top: 0; }
 .stack-sm > * + * { margin-top: 0.75rem; }
 .stack-lg > * + * { margin-top: 2rem; }
+.stack-lg > .eyebrow + * { margin-top: 0; }
 
 /* ----------------------------------------------------------------------------
    Buttons
@@ -217,12 +241,12 @@ p {
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: var(--white);
+  background: var(--accent);
+  color: var(--ink);
   box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover {
-  background: var(--primary-hover);
+  background: var(--accent-hover);
   box-shadow: var(--shadow);
 }
 
@@ -242,7 +266,7 @@ p {
   border-color: var(--border-strong);
 }
 .btn-ghost:hover {
-  background: oklch(0.232 0.097 349.64 / 0.04);
+  background: rgb(47 53 59 / 0.04);
 }
 
 .btn-light {
@@ -328,7 +352,7 @@ p {
 .select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px oklch(0.5865 0.2011 24.61 / 0.15);
+  box-shadow: 0 0 0 3px rgb(163 92 68 / 0.16);
 }
 .textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
 
@@ -361,14 +385,14 @@ p {
   line-height: 1.5;
 }
 .notice-ok {
-  background: var(--surface-green);
-  border: 1px solid var(--surface-green-deep);
-  color: oklch(0.42 0.09 150);
+  background: var(--surface-moss);
+  border: 1px solid var(--surface-moss-deep);
+  color: var(--moss);
 }
 .notice-err {
-  background: oklch(0.95 0.03 25);
-  border: 1px solid oklch(0.85 0.08 25);
-  color: oklch(0.45 0.16 25);
+  background: var(--surface-terracotta);
+  border: 1px solid var(--surface-terracotta-deep);
+  color: var(--primary-hover);
 }
 
 /* ----------------------------------------------------------------------------
@@ -376,7 +400,7 @@ p {
    -------------------------------------------------------------------------- */
 .hr {
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--divider-slate);
 }
 
 .text-accent { color: var(--primary); }
@@ -393,6 +417,12 @@ p {
 
 @media (max-width: 640px) {
   .form-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --nav-height: 64px;
+  }
 }
 
 /* ----------------------------------------------------------------------------
