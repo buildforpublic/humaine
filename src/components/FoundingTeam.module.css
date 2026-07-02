@@ -23,6 +23,35 @@
   transform: translateY(-2px);
 }
 
+/* One-by-one entrance. Cards are visible by default; the client grid only
+   hides them once JS is running ("armed") and then reveals them in order
+   ("in"), so a failed observer can never leave them stuck hidden. */
+.grid[data-anim="armed"] .card {
+  opacity: 0;
+}
+.grid[data-anim="in"] .card {
+  animation: cardIn 0.5s var(--ease) backwards;
+  animation-delay: calc(min(var(--i, 0), 14) * 55ms);
+}
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grid[data-anim="armed"] .card {
+    opacity: 1;
+  }
+  .grid[data-anim="in"] .card {
+    animation: none;
+  }
+}
+
 /* Accent per card, cycled to echo the four brand values. */
 .card[data-accent="amber"] { --card-accent: var(--accent); }
 .card[data-accent="moss"] { --card-accent: var(--moss); }

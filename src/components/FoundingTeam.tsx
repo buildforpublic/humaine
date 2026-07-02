@@ -1,8 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import Image from "next/image";
-import { FOUNDING_MEMBERS, type FoundingMember } from "@/content";
-import styles from "./FoundingTeam.module.css";
+import { FOUNDING_MEMBERS } from "@/content";
+import { FoundingTeamGrid, type TeamCard } from "./FoundingTeamGrid";
 
 const TEAM_DIR = path.join(process.cwd(), "public", "team");
 const PHOTO_EXTS = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
@@ -31,65 +30,16 @@ function findPhotos(): Map<string, string> {
   return photos;
 }
 
-/** First letters of the first two name words, skipping honorifics. */
-function monogram(name: string): string {
-  const skip = new Set(["dr", "prof", "dato'", "dato", "datuk", "tan", "sri"]);
-  const words = name
-    .split(/\s+/)
-    .filter((w) => !skip.has(w.toLowerCase().replace(/[.]/g, "")));
-  const initials = words.slice(0, 2).map((w) => w[0] ?? "");
-  return initials.join("").toUpperCase();
-}
-
-function MemberCard({
-  member,
-  photo,
-  accent,
-}: {
-  member: FoundingMember;
-  photo?: string;
-  accent: string;
-}) {
-  return (
-    <li className={styles.card} data-accent={accent}>
-      <div className={styles.head}>
-        <div className={styles.avatar}>
-          {photo ? (
-            <Image
-              src={photo}
-              alt={member.name}
-              fill
-              sizes="72px"
-              className={styles.photo}
-            />
-          ) : (
-            <span className={styles.monogram} aria-hidden="true">
-              {monogram(member.name)}
-            </span>
-          )}
-        </div>
-        <div className={styles.meta}>
-          <h3 className={styles.name}>{member.name}</h3>
-          <span className={styles.tag}>{member.domain}</span>
-        </div>
-      </div>
-      <p className={styles.bio}>{member.oneLiner}</p>
-    </li>
-  );
-}
-
 export function FoundingTeam() {
   const photos = findPhotos();
-  return (
-    <ul className={styles.grid}>
-      {FOUNDING_MEMBERS.map((member, i) => (
-        <MemberCard
-          key={member.slug}
-          member={member}
-          photo={photos.get(member.slug)}
-          accent={ACCENTS[i % ACCENTS.length]}
-        />
-      ))}
-    </ul>
-  );
+  const cards: TeamCard[] = FOUNDING_MEMBERS.map((member, i) => ({
+    name: member.name,
+    domain: member.domain,
+    oneLiner: member.oneLiner,
+    slug: member.slug,
+    photo: photos.get(member.slug),
+    accent: ACCENTS[i % ACCENTS.length],
+  }));
+
+  return <FoundingTeamGrid members={cards} />;
 }

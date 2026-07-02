@@ -34,44 +34,10 @@ export type FoundingMember = {
   slug: string;
 };
 
-// Ordered by standing: honoured dignitaries (Dato'/Dr/Prof) first, then the
-// movement's founders, then the rest of the founding cohort.
+// Order: founders first (Aster, Yin Jue), then honoured dignitaries
+// (Dato' Wei, Dr Sumitra, Dr Dzaharudin), then the rest of the founding
+// cohort alphabetically.
 export const FOUNDING_MEMBERS: FoundingMember[] = [
-  {
-    name: "Dato' Ng Wan Peng",
-    domain: "Digital-economy leader & board advisor",
-    oneLiner:
-      "Former COO of MDEC and a 20-year architect of Malaysia's digital economy, now serving across multiple boards, providing foresight into national policy, governance, and public-private partnerships.",
-    slug: "ng-wan-peng",
-  },
-  {
-    name: "Dato' Wei Chuan Beng",
-    domain: "Tech entrepreneur & industry pioneer",
-    oneLiner:
-      "30-year technopreneur and founder of REDtone (listed 2004); contributor to Malaysia's digital ecosystem and national policy through the National Digital Economy and 4IR Council, PIKOM, National Productivity Council and more.",
-    slug: "wei-chuan-beng",
-  },
-  {
-    name: "Dr Dzaharudin Mansor",
-    domain: "AI governance & cybersecurity veteran",
-    oneLiner:
-      "Technology leader with 35+ years' experience and senior roles across Microsoft and AWS; a champion of AI governance, cybersecurity and secure digital transformation.",
-    slug: "dzaharudin-mansor",
-  },
-  {
-    name: "Prof Murali Raman",
-    domain: "Higher-ed & design-thinking leader",
-    oneLiner:
-      "Deputy Vice-Chancellor and Professor at Asia Pacific University (APU), with corporate roots at Accenture and Maybank; a design thinker closing the gap between university classrooms and industry realities.",
-    slug: "murali-raman",
-  },
-  {
-    name: "Dr Sumitra Nair",
-    domain: "Sustainability & transformation advisor",
-    oneLiner:
-      "Former MDEC EXCO and Senior VP; ex-DiGi and Telekom Malaysia; two decades of leadership in digital transformation, talent and sustainability; serving various advisory boards.",
-    slug: "sumitra-nair",
-  },
   {
     name: "Aster Wei Su Hwa",
     domain: "Neuroscientist & education entrepreneur",
@@ -81,10 +47,31 @@ export const FOUNDING_MEMBERS: FoundingMember[] = [
   },
   {
     name: "Chang Yin Jue",
-    domain: "Cognitive scientist & educator",
+    domain: "Psycholinguist & AI Educator",
     oneLiner:
       "Co-initiator of the HumAIne Movement; Cambridge-trained psycholinguist and Co-Founder of Otti NeuroLearning Institute, working on the science of human thought and language to cultivate cognitively resilient minds in the AI era.",
     slug: "chang-yin-jue",
+  },
+  {
+    name: "Dato' Wei Chuan Beng",
+    domain: "Tech entrepreneur & industry pioneer",
+    oneLiner:
+      "30-year technopreneur and founder of REDtone (listed 2004); contributor to Malaysia's digital ecosystem and national policy through the National Digital Economy and 4IR Council, PIKOM, National Productivity Council and more.",
+    slug: "wei-chuan-beng",
+  },
+  {
+    name: "Dr Sumitra Nair",
+    domain: "Sustainability & transformation advisor",
+    oneLiner:
+      "Former MDEC EXCO and Senior VP; ex-DiGi and Telekom Malaysia; two decades of leadership in digital transformation, talent and sustainability; serving various advisory boards.",
+    slug: "sumitra-nair",
+  },
+  {
+    name: "Dr Dzaharudin Mansor",
+    domain: "AI governance & cybersecurity veteran",
+    oneLiner:
+      "Technology leader with 35+ years' experience and senior roles across Microsoft and AWS; a champion of AI governance, cybersecurity and secure digital transformation.",
+    slug: "dzaharudin-mansor",
   },
   {
     name: "Arifah Sharifuddin",
@@ -155,6 +142,20 @@ export const FOUNDING_MEMBERS: FoundingMember[] = [
     oneLiner:
       "Chief Digital Officer at MRANTI driving Malaysia's national R&D commercialisation; a two-decade digital leader focused on making technology human, scalable and measurable, and on transforming organisations rather than just digitising them.",
     slug: "muhundhan-kamarapullai",
+  },
+  {
+    name: "Prof Murali Raman",
+    domain: "Higher-ed & design-thinking leader",
+    oneLiner:
+      "Deputy Vice-Chancellor and Professor at Asia Pacific University (APU), with corporate roots at Accenture and Maybank; a design thinker closing the gap between university classrooms and industry realities.",
+    slug: "murali-raman",
+  },
+  {
+    name: "Dato' Ng Wan Peng",
+    domain: "Digital-economy leader & board advisor",
+    oneLiner:
+      "Former COO of MDEC and a 20-year architect of Malaysia's digital economy, now serving across multiple boards, providing foresight into national policy, governance, and public-private partnerships.",
+    slug: "ng-wan-peng",
   },
   {
     name: "Shawn D'Cotta",

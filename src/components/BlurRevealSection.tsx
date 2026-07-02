@@ -35,8 +35,11 @@ export function BlurRevealSection({
         }
       },
       {
-        rootMargin: "0px 0px -14% 0px",
-        threshold: 0.12,
+        // threshold 0 fires as soon as any part of the section enters the
+        // (bottom-shrunk) viewport — reliable even for sections taller than the
+        // screen, which a fractional threshold could otherwise never satisfy.
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0,
       },
     );
 
