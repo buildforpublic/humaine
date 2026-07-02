@@ -4,9 +4,9 @@ import styles from "./Footer.module.css";
 
 const SOCIALS = [
   { label: "LinkedIn", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "Instagram", href: "https://instagram.com/humaine.movement" },
+  { label: "X", href: "https://x.com/humainemovement" },
   { label: "TikTok", href: "#" },
-  { label: "WhatsApp Community", href: "#" },
 ];
 
 export function Footer() {

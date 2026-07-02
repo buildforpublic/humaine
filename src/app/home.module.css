@@ -46,19 +46,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.heroThumbprint {
-  position: absolute;
-  top: 50%;
-  right: max(-112px, -7vw);
-  z-index: 1;
-  width: min(40vw, 470px);
-  height: auto;
-  transform: translateY(-50%) rotate(2deg);
-  opacity: 0.16;
-  filter: invert(18%) sepia(12%) saturate(650%) hue-rotate(166deg) brightness(92%);
-  pointer-events: none;
-}
-
 /* ------------------------------------------------------------- FALSE CHOICE */
 .binary {
   display: grid;
@@ -175,13 +162,13 @@
   color: var(--ink);
 }
 
-.valuePreview span:first-child {
+.valuePreview > span:first-child {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2vw, 1.55rem);
   line-height: 1.12;
 }
 
-.valuePreview span:last-child {
+.valuePreview > span:last-child {
   color: inherit;
   line-height: 1.35;
   opacity: 0.82;
@@ -306,11 +293,6 @@
   .valuesPreview,
   .joinGrid {
     grid-template-columns: 1fr;
-  }
-  .heroThumbprint {
-    right: -300px;
-    width: 540px;
-    opacity: 0.09;
   }
   .newsletter {
     grid-template-columns: 1fr;

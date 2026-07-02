@@ -105,7 +105,7 @@ export const FOUNDING_MEMBERS: FoundingMember[] = [
     name: "Chong Theng Hui",
     domain: "AI transformation engineer",
     oneLiner:
-      "Former CTO of Hiredly and NAIO AI Advisory Member, moving businesses from AI awareness to execution by building the AI agents and workflows that turn hype into real results.",
+      "Fractional AI CTO and Former NAIO AI Advisory Committee Member; An accredited AI Trainer helping businesses execute AI transformation through AI agents, workflow automation, and practical AI adoption.",
     slug: "chong-theng-hui",
   },
   {
@@ -133,7 +133,7 @@ export const FOUNDING_MEMBERS: FoundingMember[] = [
     name: "Matthieu Pujol",
     domain: "Global people & performance leader",
     oneLiner:
-      "15-year global tech veteran and ex-Googler; HR and Marketing leader at BrioHR, bridging the gap between knowing and doing by making human presence the foundation of performance.",
+      "15-year global tech veteran and ex-Googler; HR and Marketing leader at brioHR, bridging the gap between knowing and doing by making human presence the foundation of performance.",
     slug: "matthieu-pujol",
   },
   {
@@ -175,9 +175,9 @@ export const FOUNDING_MEMBERS: FoundingMember[] = [
 
 export const SOCIALS = [
   { label: "LinkedIn", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "Instagram", href: "https://instagram.com/humaine.movement" },
+  { label: "X", href: "https://x.com/humainemovement" },
   { label: "TikTok", href: "#" },
-  { label: "WhatsApp Community", href: "#" },
 ];
 
 /** The four core values: left (what we value more) over right. */
@@ -185,7 +185,7 @@ export const VALUES = [
   { left: "Purposeful Use", right: "Passive Consumption", color: "amber" },
   { left: "Active Thinking", right: "Replacement of Thinking", color: "moss" },
   { left: "Human Agency", right: "Total Trust on Algorithms", color: "terracotta" },
-  { left: "Deeper Connection", right: "Efficiency-at-all-costs", color: "rose" },
+  { left: "Deepen Humanness", right: "Efficiency-at-all-costs", color: "rose" },
 ];
 
 export type Principle = {
@@ -223,7 +223,7 @@ export const PRINCIPLES: Principle[] = [
     ],
   },
   {
-    title: "Deeper Connection",
+    title: "Deepen Humanness",
     band: "rose",
     points: [
       "Protect time and space to be \"AI-free\", allowing for deep reflection and strategic thinking.",

@@ -1,15 +1,12 @@
 .form {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap;
-  max-width: 460px;
 }
 .input {
-  flex: 1;
-  min-width: 220px;
+  width: 100%;
 }
 .msg {
-  flex-basis: 100%;
   font-size: 0.9375rem;
   margin-top: 2px;
 }

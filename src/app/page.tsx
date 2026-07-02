@@ -49,12 +49,6 @@ export default async function HomePage() {
             )}
           </div>
         </div>
-        <img
-          className={styles.heroThumbprint}
-          src="/thumbprint.svg"
-          alt=""
-          aria-hidden="true"
-        />
       </section>
 
       {/* --------------------------------------------------------------- FILM */}
