@@ -37,6 +37,20 @@ export const newsletter = sqliteTable("newsletter", {
 });
 
 /**
+ * People who want to be active members (volunteer / forums / events).
+ * Captured from the homepage "Be an active member" card. Email is unique so a
+ * repeat submission is a no-op rather than a duplicate lead.
+ */
+export const interest = sqliteTable("interest", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  email: text("email").notNull().unique(),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(unixepoch())`),
+});
+
+/**
  * The curated Resource Bank. Admin-managed content (not public submissions), so
  * there is no moderation queue; `published` lets editors draft or hide a row.
  * Resources are grouped on the public page under the four HumAIne `value`s
@@ -47,7 +61,7 @@ export const resources = sqliteTable("resources", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   // One of the four value keys: purposeful | active | agency | humanness.
   value: text("value").notNull(),
-  // Article | Podcast | Video | Research | Tool | Column | Report.
+  // Article | Podcast | Video | Research | Tool | Column | Report | Course | Builder.
   type: text("type").notNull(),
   title: text("title").notNull(),
   source: text("source"),
@@ -78,3 +92,4 @@ export type Signature = typeof signatures.$inferSelect;
 export type NewSignature = typeof signatures.$inferInsert;
 export type Resource = typeof resources.$inferSelect;
 export type NewResource = typeof resources.$inferInsert;
+export type Interest = typeof interest.$inferSelect;

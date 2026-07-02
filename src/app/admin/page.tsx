@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAdminSignatures } from "@/db/queries";
+import { getAdminSignatures, getInterest } from "@/db/queries";
 import { adminLogout } from "./actions";
 import { isAdmin, adminSecret } from "./auth";
 import { AdminLogin } from "./AdminLogin";
@@ -23,7 +23,10 @@ export default async function AdminPage() {
     );
   }
 
-  const rows = await getAdminSignatures();
+  const [rows, interest] = await Promise.all([
+    getAdminSignatures(),
+    getInterest(),
+  ]);
   const hidden = rows.filter((r) => !r.approved);
   const visible = rows.filter((r) => r.approved);
 
@@ -40,6 +43,18 @@ export default async function AdminPage() {
           </p>
         </div>
         <div className={styles.headerActions}>
+          <a
+            href="/admin/export?type=signatures"
+            className="btn btn-secondary btn-sm"
+          >
+            Export signers CSV
+          </a>
+          <a
+            href="/admin/export?type=interest"
+            className="btn btn-secondary btn-sm"
+          >
+            Export interest CSV
+          </a>
           <Link href="/admin/resources" className="btn btn-secondary btn-sm">
             Resource Bank
           </Link>
@@ -66,6 +81,32 @@ export default async function AdminPage() {
           <p className="muted">No visible signatures yet.</p>
         ) : (
           <ModerationList rows={visible} />
+        )}
+      </section>
+
+      <section className={styles.group}>
+        <h2 className={styles.groupTitle}>
+          Active-member interest ({interest.length})
+        </h2>
+        {interest.length === 0 ? (
+          <p className="muted">No interest sign-ups yet.</p>
+        ) : (
+          <ul className={styles.interestList}>
+            {interest.map((r) => (
+              <li key={r.id} className={styles.interestRow}>
+                <span className={styles.interestName}>{r.name}</span>
+                <a
+                  href={`mailto:${r.email}`}
+                  className={styles.interestEmail}
+                >
+                  {r.email}
+                </a>
+                <span className={styles.interestDate}>
+                  {r.createdAt.toLocaleDateString("en-GB")}
+                </span>
+              </li>
+            ))}
+          </ul>
         )}
       </section>
     </div>

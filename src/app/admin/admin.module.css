@@ -240,3 +240,44 @@
     justify-content: flex-start;
   }
 }
+
+/* ----------------------------------------------------- ACTIVE-MEMBER INTEREST */
+.interestList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--r, 10px);
+  overflow: hidden;
+}
+.interestRow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.interestRow:last-child {
+  border-bottom: none;
+}
+.interestName {
+  font-weight: 600;
+}
+.interestEmail {
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+.interestDate {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .interestRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

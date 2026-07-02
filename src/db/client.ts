@@ -39,6 +39,12 @@ export function ensureSchema(): Promise<void> {
             email TEXT NOT NULL UNIQUE,
             created_at INTEGER NOT NULL DEFAULT (unixepoch())
           )`,
+          `CREATE TABLE IF NOT EXISTS interest (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE,
+            created_at INTEGER NOT NULL DEFAULT (unixepoch())
+          )`,
           `CREATE TABLE IF NOT EXISTS resources (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             value TEXT NOT NULL,

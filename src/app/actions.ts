@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { db, ensureSchema } from "@/db/client";
-import { newsletter, signatures } from "@/db/schema";
+import { interest, newsletter, signatures } from "@/db/schema";
 
 export type ActionState = {
   ok: boolean;
@@ -65,6 +65,33 @@ export async function signManifesto(
       ok: false,
       message: "Something went wrong saving your signature. Please try again.",
     };
+  }
+}
+
+/** "Be an active member" interest capture (homepage). */
+export async function submitInterest(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const name = clean(formData.get("name"), 120);
+  const email = clean(formData.get("email"), 200);
+  if (!name) return { ok: false, message: "Please enter your name." };
+  if (!email || !EMAIL_RE.test(email))
+    return { ok: false, message: "Please enter a valid email address." };
+
+  try {
+    await ensureSchema();
+    await db
+      .insert(interest)
+      .values({ name, email })
+      .onConflictDoNothing({ target: interest.email });
+    return {
+      ok: true,
+      message: "Thanks! We'll reach out with ways to get involved.",
+    };
+  } catch (err) {
+    console.error("submitInterest failed", err);
+    return { ok: false, message: "Something went wrong. Please try again." };
   }
 }
 

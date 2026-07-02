@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 460px;
+}
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.input {
+  flex: 1;
+  min-width: 200px;
+}
+.msg {
+  font-size: 0.9375rem;
+  margin-top: 2px;
+}
+.ok {
+  color: var(--accent);
+}
+.err {
+  color: var(--primary);
+}

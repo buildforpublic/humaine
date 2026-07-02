@@ -1,6 +1,13 @@
 import { and, asc, desc, eq, isNotNull, ne, sql } from "drizzle-orm";
 import { db, ensureSchema } from "./client";
-import { resources, signatures, type Resource, type Signature } from "./schema";
+import {
+  interest,
+  resources,
+  signatures,
+  type Interest,
+  type Resource,
+  type Signature,
+} from "./schema";
 import { VALUES, type ValueMeta } from "./resource-values";
 
 export type BoardMessage = {
@@ -88,6 +95,12 @@ export async function getAdminSignatures(): Promise<Signature[]> {
     .select()
     .from(signatures)
     .orderBy(asc(signatures.approved), desc(signatures.createdAt));
+}
+
+/** All "active member" interest sign-ups for the admin dashboard, newest first. */
+export async function getInterest(): Promise<Interest[]> {
+  await ensureSchema();
+  return db.select().from(interest).orderBy(desc(interest.createdAt));
 }
 
 /* ---------------------------------------------------------------------------
