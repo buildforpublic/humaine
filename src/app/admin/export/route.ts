@@ -1,5 +1,5 @@
 import { db, ensureSchema } from "@/db/client";
-import { interest, signatures } from "@/db/schema";
+import { interest, newsletter, signatures } from "@/db/schema";
 import { desc } from "drizzle-orm";
 import { isAdmin } from "../auth";
 
@@ -52,6 +52,18 @@ export async function GET(request: Request) {
     return csvResponse(`humaine-interest-${stamp(new Date())}.csv`, lines);
   }
 
+  if (type === "newsletter") {
+    const rows = await db
+      .select()
+      .from(newsletter)
+      .orderBy(desc(newsletter.createdAt));
+    const lines = [csvLine(["id", "email", "created_at"])];
+    for (const r of rows) {
+      lines.push(csvLine([r.id, r.email, r.createdAt.toISOString()]));
+    }
+    return csvResponse(`humaine-newsletter-${stamp(new Date())}.csv`, lines);
+  }
+
   if (type === "signatures") {
     const rows = await db
       .select()
@@ -92,7 +104,10 @@ export async function GET(request: Request) {
     return csvResponse(`humaine-signatures-${stamp(new Date())}.csv`, lines);
   }
 
-  return new Response("Unknown export type. Use ?type=signatures or ?type=interest.", {
-    status: 400,
-  });
+  return new Response(
+    "Unknown export type. Use ?type=signatures, ?type=interest or ?type=newsletter.",
+    {
+      status: 400,
+    },
+  );
 }

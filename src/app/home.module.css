@@ -46,6 +46,20 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Oversized HumAIne brand mark, anchored to the right of the hero. */
+.heroMark {
+  position: absolute;
+  top: 50%;
+  right: max(-48px, -4vw);
+  z-index: 1;
+  width: min(40vw, 460px);
+  height: auto;
+  transform: translateY(-50%) rotate(3deg);
+  opacity: 0.9;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ------------------------------------------------------------- FALSE CHOICE */
 .binary {
   display: grid;
@@ -297,6 +311,11 @@
   .newsletter {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+  .heroMark {
+    width: 70vw;
+    opacity: 0.14;
+    right: -14vw;
   }
 }
 

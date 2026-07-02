@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAdminSignatures, getInterest } from "@/db/queries";
+import { getAdminSignatures, getInterest, getNewsletter } from "@/db/queries";
 import { adminLogout } from "./actions";
 import { isAdmin, adminSecret } from "./auth";
 import { AdminLogin } from "./AdminLogin";
@@ -23,9 +23,10 @@ export default async function AdminPage() {
     );
   }
 
-  const [rows, interest] = await Promise.all([
+  const [rows, interest, subscribers] = await Promise.all([
     getAdminSignatures(),
     getInterest(),
+    getNewsletter(),
   ]);
   const hidden = rows.filter((r) => !r.approved);
   const visible = rows.filter((r) => r.approved);
@@ -54,6 +55,12 @@ export default async function AdminPage() {
             className="btn btn-secondary btn-sm"
           >
             Export interest CSV
+          </a>
+          <a
+            href="/admin/export?type=newsletter"
+            className="btn btn-secondary btn-sm"
+          >
+            Export newsletter CSV
           </a>
           <Link href="/admin/resources" className="btn btn-secondary btn-sm">
             Resource Bank
@@ -95,6 +102,31 @@ export default async function AdminPage() {
             {interest.map((r) => (
               <li key={r.id} className={styles.interestRow}>
                 <span className={styles.interestName}>{r.name}</span>
+                <a
+                  href={`mailto:${r.email}`}
+                  className={styles.interestEmail}
+                >
+                  {r.email}
+                </a>
+                <span className={styles.interestDate}>
+                  {r.createdAt.toLocaleDateString("en-GB")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className={styles.group}>
+        <h2 className={styles.groupTitle}>
+          Newsletter subscribers ({subscribers.length})
+        </h2>
+        {subscribers.length === 0 ? (
+          <p className="muted">No newsletter subscribers yet.</p>
+        ) : (
+          <ul className={styles.interestList}>
+            {subscribers.map((r) => (
+              <li key={r.id} className={styles.newsletterRow}>
                 <a
                   href={`mailto:${r.email}`}
                   className={styles.interestEmail}

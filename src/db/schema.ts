@@ -93,3 +93,4 @@ export type NewSignature = typeof signatures.$inferInsert;
 export type Resource = typeof resources.$inferSelect;
 export type NewResource = typeof resources.$inferInsert;
 export type Interest = typeof interest.$inferSelect;
+export type Newsletter = typeof newsletter.$inferSelect;

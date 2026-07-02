@@ -2,9 +2,11 @@ import { and, asc, desc, eq, isNotNull, ne, sql } from "drizzle-orm";
 import { db, ensureSchema } from "./client";
 import {
   interest,
+  newsletter,
   resources,
   signatures,
   type Interest,
+  type Newsletter,
   type Resource,
   type Signature,
 } from "./schema";
@@ -101,6 +103,12 @@ export async function getAdminSignatures(): Promise<Signature[]> {
 export async function getInterest(): Promise<Interest[]> {
   await ensureSchema();
   return db.select().from(interest).orderBy(desc(interest.createdAt));
+}
+
+/** All newsletter subscribers for the admin dashboard, newest first. */
+export async function getNewsletter(): Promise<Newsletter[]> {
+  await ensureSchema();
+  return db.select().from(newsletter).orderBy(desc(newsletter.createdAt));
 }
 
 /* ---------------------------------------------------------------------------

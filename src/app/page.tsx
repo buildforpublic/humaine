@@ -49,6 +49,12 @@ export default async function HomePage() {
             )}
           </div>
         </div>
+        <img
+          className={styles.heroMark}
+          src="/humaine-logo.png"
+          alt=""
+          aria-hidden="true"
+        />
       </section>
 
       {/* --------------------------------------------------------------- FILM */}
