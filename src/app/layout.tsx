@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://humaine-movement.com"),
   applicationName: "HumAIne Movement",
   title: {
-    default: "HumAIne Movement | Embrace AI. Become More Human",
+    default: "HumAIne Movement | Championing Human-AI Synergy",
     template: "%s · HumAIne",
   },
   description:
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "HumAIne Movement | Embrace AI. Become More Human",
+    title: "HumAIne Movement | Championing Human-AI Synergy",
     description:
       "A global movement and signable manifesto for people who believe embracing AI should deepen human agency, thinking, purpose, and connection.",
     url: "https://humaine-movement.com",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "HumAIne Movement | Embrace AI. Become More Human",
+    title: "HumAIne Movement | Championing Human-AI Synergy",
     description:
       "Read and sign the HumAIne Manifesto for using AI with purpose, active thinking, human agency, and deeper human connection.",
   },

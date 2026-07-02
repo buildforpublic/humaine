@@ -2,8 +2,10 @@
   display: grid;
   justify-items: center;
   gap: clamp(1.15rem, 2.2vw, 1.8rem);
+  /* Georgia serif for the storyline — warmer, more editorial than the UI sans. */
+  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.55rem, 3vw, 2.45rem);
-  line-height: 1.2;
+  line-height: 1.25;
   font-weight: 700;
   text-align: center;
   color: rgb(47 53 59 / 0.18);

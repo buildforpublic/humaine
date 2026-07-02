@@ -15,7 +15,7 @@ export function Footer() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
           <Logo inverted />
-          <p className={styles.tagline}>Embrace AI. Become more human.</p>
+          <p className={styles.tagline}>Championing Human-AI Synergy.</p>
         </div>
 
         <nav className={styles.col} aria-label="Site">

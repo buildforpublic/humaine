@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
 import { BlurRevealSection } from "@/components/BlurRevealSection";
 import { CommunityCarousel } from "@/components/CommunityCarousel";
 import { FoundingTeam } from "@/components/FoundingTeam";
+import { InterestForm } from "@/components/InterestForm";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { TextReveal } from "@/components/TextReveal";
 import { VideoSection } from "@/components/VideoSection";
 import ParticlesBg from "@/components/ui/particles-bg";
-import { SOCIALS, VALUES } from "@/content";
+import { VALUES } from "@/content";
 import { getSignatureCount } from "@/db/queries";
 import styles from "./home.module.css";
 
@@ -25,9 +25,9 @@ export default async function HomePage() {
         <div className="container">
           <div className={styles.heroInner}>
             <h1 className="display rise rise-2">
-              Embrace AI
+              Championing
               <br className={styles.brk} />
-              <span className={styles.heroLine}>Become more human</span>
+              <span className={styles.heroLine}>Human-AI Synergy</span>
             </h1>
             <p className="lead rise rise-3" style={{ maxWidth: "44ch" }}>
               A global movement for people embracing AI fully while deepening
@@ -123,6 +123,11 @@ export default async function HomePage() {
               you.
             </p>
           </div>
+          <div>
+            <Link href="/resources" className="btn btn-secondary btn-lg">
+              Explore the Resource Bank
+            </Link>
+          </div>
         </div>
       </BlurRevealSection>
 
@@ -139,7 +144,10 @@ export default async function HomePage() {
                 className={`${styles.valuePreview} ${styles[value.color]}`}
               >
                 <span>{value.left}</span>
-                <span>{value.right}</span>
+                <span>
+                  <span className={styles.valueOver}>over</span>
+                  {value.right}
+                </span>
               </li>
             ))}
           </ul>
@@ -150,7 +158,9 @@ export default async function HomePage() {
       </BlurRevealSection>
 
       {/* ------------------------------------------------------ FOUNDING MEMBERS */}
-      <BlurRevealSection id="founding-members" className="section">
+      {/* Plain section (no whole-section blur reveal): the cards run their own
+          reliable one-by-one entrance in FoundingTeamGrid. */}
+      <section id="founding-members" className="section">
         <div className="container stack-lg">
           <div className="stack" style={{ textAlign: "center", maxWidth: "44ch", marginInline: "auto" }}>
             <h2>Founding Members of HumAIne</h2>
@@ -165,7 +175,7 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-      </BlurRevealSection>
+      </section>
 
       {/* -------------------------------------------------------------- FOLLOW */}
       <BlurRevealSection id="follow" className="section band-ink">
@@ -195,25 +205,11 @@ export default async function HomePage() {
 
             <div className={styles.joinCard}>
               <h3>Be an active member</h3>
-              <p>Join future forums, offline events, or contribute as a volunteer.</p>
-              <div className={styles.socials}>
-                {SOCIALS.filter((s) => s.label !== "TikTok").map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.social}
-                  >
-                    {s.label === "LinkedIn" && <FaLinkedinIn aria-hidden="true" />}
-                    {s.label === "Instagram" && <FaInstagram aria-hidden="true" />}
-                    {s.label === "WhatsApp Community" && (
-                      <FaWhatsapp aria-hidden="true" />
-                    )}
-                    {s.label}
-                  </a>
-                ))}
-              </div>
+              <p>
+                Join future forums, offline events, or contribute as a
+                volunteer. Leave your details and we&rsquo;ll be in touch.
+              </p>
+              <InterestForm />
             </div>
           </div>
         </div>

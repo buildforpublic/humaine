@@ -187,6 +187,16 @@
   opacity: 0.82;
 }
 
+.valueOver {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0.72;
+}
+
 .amber {
   background: var(--accent);
   color: var(--ink);

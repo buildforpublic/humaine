@@ -173,7 +173,7 @@ export default async function ManifestoPage() {
             <p className={styles.kicker}>The living manifesto</p>
             <h2>
               Embrace AI. <br />
-              <span>Become more human.</span>
+              <span>Elevate Human Potential.</span>
             </h2>
             <p>
               The values endure even as versions evolve. If this direction
