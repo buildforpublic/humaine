@@ -56,6 +56,8 @@ export const TYPES = [
   "Tool",
   "Column",
   "Report",
+  "Course",
+  "Builder",
 ] as const;
 
 /** Canonical origin buckets that drive the source-mix bar and origin filter. */
